@@ -492,6 +492,9 @@ tbody tr:hover {
 tbody tr.selected {
     background: #fff3f3;
 }
+.bi-three-dots{
+    cursor: pointer;
+}
 
 .user-cell {
     display: flex;
