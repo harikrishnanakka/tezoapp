@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #fff;
+    background: #fcfcfc;
 }
 
 .app {
@@ -285,8 +285,8 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 14px;
-    width:170px;
+    font-size: 12px;
+    width:140px;
     height:32px;
 }
 
@@ -439,6 +439,7 @@ body {
     width: 24px;
     height: 24px;
     margin-right:-7px;
+    margin-top:-9px;
 }
 
 .card-body {
