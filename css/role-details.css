@@ -31,13 +31,13 @@ body {
 .sidebar-title {
     font-size: 12px;
     color: #999;
-    margin: 20px 10px 25px;
+    margin: 20px 10px 20px;
 }
 .menu li {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
     padding: 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -46,6 +46,10 @@ body {
 
 .menu li img {
     width: 18px;
+}
+
+.menu a{
+    text-decoration: none;
 }
 
 .menu li .arrow {
