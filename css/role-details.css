@@ -37,8 +37,8 @@ body {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 7px;
-    padding: 10px;
+    gap: 10px;
+    padding: 7px;
     border-radius: 6px;
     cursor: pointer;
     position: relative;
