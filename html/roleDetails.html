@@ -1,313 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Role Details - Employees</title>
     <link rel="stylesheet" href="../css/role-details.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
+
 <body>
 
-<div class="app">
+    <div class="app">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <img src="../images/TezoLogo.png" class="logo">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="../images/TezoLogo.png" class="logo">
 
-        <p class="sidebar-title">ALL</p>
-        <ul class="menu">
-            <li>
-                <img src="../images/Vertical nav/Dashboard.svg">
-                <span>Dashboard</span>
-            </li>
-            <li>
-                <img src="../images/team_svgrepo.com.svg">
-                <a href="../html/employees.html"><span>Employees</span></a>
-            </li>
-        </ul>
+            <p class="sidebar-title">ALL</p>
+            <ul class="menu">
+                <li>
+                    <img src="../images/Vertical nav/Dashboard.svg">
+                    <span>Dashboard</span>
+                </li>
+                <li>
+                    <img src="../images/team_svgrepo.com.svg">
+                    <a href="../html/employees.html"><span>Employees</span></a>
+                </li>
+            </ul>
 
-        <p class="sidebar-title">ROLE / USER MANAGEMENT</p>
-        <ul class="menu">
-            <li class="active">
-                <img src="../images/roles-redcolour.png">
-                <a href="../html/roles.html"><span id="role-span">Roles</span></a>
-                <i class="bi bi-chevron-right"></i>
-            </li>
-            <li>
-                <img src="../images/Vertical nav/assign user.svg">
-                <span>Access rights</span>
-                <i class="bi bi-chevron-right"></i>
-            </li>
-        </ul>
+            <p class="sidebar-title">ROLE / USER MANAGEMENT</p>
+            <ul class="menu">
+                <li class="active">
+                    <img src="../images/roles-redcolour.png">
+                    <a href="../html/roles.html"><span id="role-span">Roles</span></a>
+                    <i class="bi bi-chevron-right"></i>
+                </li>
+                <li>
+                    <img src="../images/Vertical nav/assign user.svg">
+                    <span>Access rights</span>
+                    <i class="bi bi-chevron-right"></i>
+                </li>
+            </ul>
 
-        <div class="update-box">
-            <p class="install-text">Install new update 2.3.1A</p>
-            <p class="update-subtitle">Allow to launch the new update for the AD application</p>
-            <div class="update-actions">
-                <button class="btn-light">Dismiss</button>
-                <button class="btn-primary">Accept</button>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main -->
-    <main class="main">
-        <div class="main-inner">
-         <div class="topbar-wrapper">
-         <img src="../images/handle.png" class="handle-pic">
-        <!-- Top bar -->
-        <header class="topbar">
-            <div class="search-box">
-                <img src="../images/bx-search.png" class="search-icon">
-                <input type="text" placeholder="Search">
-            </div>
-
-            <div class="topbar-right">
-                <img src="../images/IconButton.png" class="icon-btn">
-                <img src="../images/icon1.png" class="icon-btn">
-                <img src="../images/icon2.png" class="icon-btn">
-                <img src="../images/icon3.png" class="icon-btn">
-                <div class="profile-dropdown">
-                    <div class="green-circle"></div>
-                    <img src="../images/employee-image1.jpg" class="icon-btn">
-                    <div class="profile-info">
-                        <span class="profile-name">Jhon Abraham</span>
-                        <span class="profile-role">Admin</span>
-                    </div>
-                    <i class="bi bi-chevron-down"></i>
+            <div class="update-box">
+                <p class="install-text">Install new update 2.3.1A</p>
+                <p class="update-subtitle">Allow to launch the new update for the AD application</p>
+                <div class="update-actions">
+                    <button class="btn-light">Dismiss</button>
+                    <button class="btn-primary">Accept</button>
                 </div>
             </div>
-        </header>
-        </div>
+        </aside>
 
-        <!-- Breadcrumb -->
-        <div class="breadcrumb">
-            <a href="../html/roles.html">Roles</a>
-            <span class="separator"><i class="bi bi-chevron-right"></i></span>
-            <span class="current">Employees</span>
-        </div>
+        <!-- Main -->
+        <main class="main">
+            <div class="main-inner">
+                <div class="topbar-wrapper">
+                    <img src="../images/handle.png" class="handle-pic">
+                    <!-- Top bar -->
+                    <header class="topbar">
+                        <div class="search-box">
+                            <img src="../images/bx-search.png" class="search-icon">
+                            <input type="text" placeholder="Search">
+                        </div>
 
-        <!-- Page header -->
-        <section class="page-header">
-            <div>
-                <p class="subtitle">All the roles are configured here</p>
+                        <div class="topbar-right">
+                            <img src="../images/IconButton.png" class="icon-btn">
+                            <img src="../images/icon1.png" class="icon-btn">
+                            <img src="../images/icon2.png" class="icon-btn">
+                            <img src="../images/icon3.png" class="icon-btn">
+                            <div class="profile-dropdown">
+                                <div class="green-circle"></div>
+                                <img src="../images/employee-image1.jpg" class="icon-btn">
+                                <div class="profile-info">
+                                    <span class="profile-name">Jhon Abraham</span>
+                                    <span class="profile-role">Admin</span>
+                                </div>
+                                <i class="bi bi-chevron-down"></i>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="../html/roles.html">Roles</a>
+                    <span class="separator"><i class="bi bi-chevron-right"></i></span>
+                    <span class="current">Employees</span>
+                </div>
+
+                <!-- Page header -->
+                <section class="page-header">
+                    <div>
+                        <p class="subtitle">All the roles are configured here</p>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn-primary">
+                            <img src="../images/Interface/Add.svg">
+                            ADD EMPLOYEE
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Role Description -->
+                <section class="role-description">
+                    <h3>Role Description</h3>
+                    <p>Configure the providers that are available to users when they sign in. Configure the providers
+                        that are available to users when they sign in. Configure the providers that are available to
+                        users when they sign in. Configure the providers that are available to users when they sign in.
+                    </p>
+                </section>
+
+                <!-- Employee Cards Grid -->
+                <section class="employee-cards">
+
+                    <!-- Card 1 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image1.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Robert Fox</h4>
+                                <p class="job-title">Head of Product Design</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF122</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">adamk@yahoo.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Technology</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Stockton, New Hampshire</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image2.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Marvin McKinney</h4>
+                                <p class="job-title">Head of Engineering</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF150</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">s.ravani@yahoo.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Admin</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Syracuse, Connecticut</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image3.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Eleanor Pena</h4>
+                                <p class="job-title">Senior Interaction Designer</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF240</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">grolschie@mac.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Customer Executive</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Portland, Illinois</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image1.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Jane Cooper</h4>
+                                <p class="job-title">Product Analyst</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF389</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">chronos@aol.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Product</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Coppell, Virginia</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image2.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Floyd Miles</h4>
+                                <p class="job-title">Visual Designer</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF209</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">dgatwood@msn.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Customer Executive</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Lansing, Illinois</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="employee-card">
+                        <div class="card-header">
+                            <img src="../images/employee-image3.jpg" class="employee-avatar">
+                            <div class="employee-info">
+                                <h4>Dianne Russell</h4>
+                                <p class="job-title">Full Stack Software Engineer</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="detail-row">
+                                <img src="../images/Vector (1).svg" class="detail-icon">
+                                <span class="detail-value">INF922</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">kspitler@live.com</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/team_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Human Research</span>
+                            </div>
+                            <div class="detail-row">
+                                <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
+                                <span class="detail-value">Corona, Michigan</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
+                        </div>
+                    </div>
+
+                </section>
             </div>
-
-            <div class="actions">
-                <button class="btn-primary">
-                    <img src="../images/Interface/Add.svg">
-                    ADD EMPLOYEE
-                </button>
-            </div>
-        </section>
-
-        <!-- Role Description -->
-        <section class="role-description">
-            <h3>Role Description</h3>
-            <p>Configure the providers that are available to users when they sign in. Configure the providers that are available to users when they sign in. Configure the providers that are available to users when they sign in. Configure the providers that are available to users when they sign in.</p>
-        </section>
-
-        <!-- Employee Cards Grid -->
-        <section class="employee-cards">
-            
-            <!-- Card 1 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image1.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Robert Fox</h4>
-                        <p class="job-title">Head of Product Design</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF122</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">adamk@yahoo.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Technology</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Stockton, New Hampshire</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a>
-                </a>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image2.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Marvin McKinney</h4>
-                        <p class="job-title">Head of Engineering</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF150</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">s.ravani@yahoo.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Admin</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Syracuse, Connecticut</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image3.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Eleanor Pena</h4>
-                        <p class="job-title">Senior Interaction Designer</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF240</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">grolschie@mac.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Customer Executive</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Portland, Illinois</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image1.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Jane Cooper</h4>
-                        <p class="job-title">Product Analyst</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF389</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">chronos@aol.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Product</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Coppell, Virginia</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image2.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Floyd Miles</h4>
-                        <p class="job-title">Visual Designer</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF209</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">dgatwood@msn.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Customer Executive</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Lansing, Illinois</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="employee-card">
-                <div class="card-header">
-                    <img src="../images/employee-image3.jpg" class="employee-avatar">
-                    <div class="employee-info">
-                        <h4>Dianne Russell</h4>
-                        <p class="job-title">Full Stack Software Engineer</p>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="detail-row">
-                        <img src="../images/Vector (1).svg" class="detail-icon">
-                        <span class="detail-value">INF922</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/email-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">kspitler@live.com</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/team_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Human Research</span>
-                    </div>
-                    <div class="detail-row">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="detail-icon">
-                        <span class="detail-value">Corona, Michigan</span>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="view-link">View <img src="../images/Vector.svg"></a></a>
-                </div>
-            </div>
-
-        </section>
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
 
 </body>
+
 </html>

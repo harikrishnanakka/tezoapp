@@ -1,340 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roles</title>
     <link rel="stylesheet" href="../css/roles.css">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
+
 <body>
 
-<div class="app">
+    <div class="app">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <img src="../images/TezoLogo.png" class="logo">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <img src="../images/TezoLogo.png" class="logo">
 
-        <p class="sidebar-title">ALL</p>
-        <ul class="menu">
-            <li>
-                <img src="../images/Vertical nav/Dashboard.svg">
-                <span>Dashboard</span>
-            </li>
-            <li>
-                <img src="../images/team_svgrepo.com.svg">
-                <a href="../html/employees.html" class="emp-img"><span>Employees</span></a>
-            </li>
-        </ul>
+            <p class="sidebar-title">ALL</p>
+            <ul class="menu">
+                <li>
+                    <img src="../images/Vertical nav/Dashboard.svg">
+                    <span>Dashboard</span>
+                </li>
+                <li>
+                    <img src="../images/team_svgrepo.com.svg">
+                    <a href="../html/employees.html" class="emp-img"><span>Employees</span></a>
+                </li>
+            </ul>
 
-        <p class="sidebar-title">ROLE / USER MANAGEMENT</p>
-        <ul class="menu">
-            <li class="active">
-                <img src="../images/roles-redcolour.png">
-                <span>Roles</span>
-                 <i class="bi bi-chevron-right"></i>
-            </li>
-            <li>
-                <img src="../images/Vertical nav/assign user.svg">
-                <span>Access rights</span>
-                <i class="bi bi-chevron-right"></i>
-            </li>
-        </ul>
+            <p class="sidebar-title">ROLE / USER MANAGEMENT</p>
+            <ul class="menu">
+                <li class="active">
+                    <img src="../images/roles-redcolour.png">
+                    <span>Roles</span>
+                    <i class="bi bi-chevron-right"></i>
+                </li>
+                <li>
+                    <img src="../images/Vertical nav/assign user.svg">
+                    <span>Access rights</span>
+                    <i class="bi bi-chevron-right"></i>
+                </li>
+            </ul>
 
-        <div class="update-box">
-            <p class="install-text">Install new update 2.3.1A</p>
-            <p class="update-subtitle">Allow to launch the new update for the AD application</p>
-            <div class="update-actions">
-                <button class="btn-light">Dismiss</button>
-                <button class="btn-primary">Accept</button>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main -->
-    <main class="main">
-         <div class="topbar-wrapper">
-         <img src="../images/handle.png" class="handle-pic">
-        <!-- Top bar -->
-        <header class="topbar">
-            <div class="search-box">
-                <img src="../images/bx-search.png" class="search-icon">
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="topbar-right">
-                <img src="../images/IconButton.png" class="icon-btn">
-                <img src="../images/icon1.png" class="icon-btn">
-                <img src="../images/icon2.png" class="icon-btn">
-                <img src="../images/icon3.png" class="icon-btn">
-                <div class="profile-dropdown">
-                    <div class="green-circle"></div>
-                    <img src="../images/employee-image1.jpg" class="icon-btn">
-                    <div class="profile-info">
-                        <span class="profile-name">Jhon Abraham</span>
-                        <span class="profile-role">Admin</span>
-                    </div>
-                     <i class="bi bi-chevron-down"></i>
+            <div class="update-box">
+                <p class="install-text">Install new update 2.3.1A</p>
+                <p class="update-subtitle">Allow to launch the new update for the AD application</p>
+                <div class="update-actions">
+                    <button class="btn-light">Dismiss</button>
+                    <button class="btn-primary">Accept</button>
                 </div>
             </div>
-        </header>
-        </div>
+        </aside>
 
-        <!-- Page header -->
-        <section class="page-header">
-            <div>
-                <h2>Roles</h2>
-                <p>All the roles are configured here</p>
+        <!-- Main -->
+        <main class="main">
+            <div class="topbar-wrapper">
+                <img src="../images/handle.png" class="handle-pic">
+                <!-- Top bar -->
+                <header class="topbar">
+                    <div class="search-box">
+                        <img src="../images/bx-search.png" class="search-icon">
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <div class="topbar-right">
+                        <img src="../images/IconButton.png" class="icon-btn">
+                        <img src="../images/icon1.png" class="icon-btn">
+                        <img src="../images/icon2.png" class="icon-btn">
+                        <img src="../images/icon3.png" class="icon-btn">
+                        <div class="profile-dropdown">
+                            <div class="green-circle"></div>
+                            <img src="../images/employee-image1.jpg" class="icon-btn">
+                            <div class="profile-info">
+                                <span class="profile-name">Jhon Abraham</span>
+                                <span class="profile-role">Admin</span>
+                            </div>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                    </div>
+                </header>
             </div>
 
-            <div class="actions">
-                <button class="btn-primary-addrole">
-                    <img src="../images/Interface/Add.svg">
-                    ADD ROLE
-                </button>
-            </div>
-        </section>
+            <!-- Page header -->
+            <section class="page-header">
+                <div>
+                    <h2>Roles</h2>
+                    <p>All the roles are configured here</p>
+                </div>
 
-        <!-- Filters -->
-        <section class="filters">
-            <div class="filter-left">
-                <span class="filter-text">Filter</span><i class="bi bi-filter"></i>
-                <select><option>Department</option>
+                <div class="actions">
+                    <button class="btn-primary-addrole">
+                        <img src="../images/Interface/Add.svg">
+                        ADD ROLE
+                    </button>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="filters">
+                <div class="filter-left">
+                    <span class="filter-text">Filter</span><i class="bi bi-filter"></i>
+                    <select>
+                        <option>Department</option>
                         <option>IT</option>
                         <option>Product Engg</option>
                         <option>UIUX</option>
-                </select>
-                <select><option>Location</option>
+                    </select>
+                    <select>
+                        <option>Location</option>
                         <option>Hyderabad</option>
                         <option>Bengaluru</option>
                         <option>chennai</option>
                         <option>pune</option>
                         <option>Mumbai</option>
-                </select>
-            </div>
-
-            <div class="filter-right">
-                <button class="btn-outline">Reset</button>
-                <button class="btn-primary">Apply</button>
-            </div>
-        </section>
-
-        <!-- Role Cards Grid -->
-        <section class="role-cards">
-            
-            <!-- Card 1 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Customer Service Manager</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
+                    </select>
                 </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">IT</span>
+
+                <div class="filter-right">
+                    <button class="btn-outline">Reset</button>
+                    <button class="btn-primary">Apply</button>
+                </div>
+            </section>
+
+            <!-- Role Cards Grid -->
+            <section class="role-cards">
+
+                <!-- Card 1 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Customer Service Manager</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">IT</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-            <!-- Card 2 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Ux Designer</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">Product Engg</span>
+                <!-- Card 2 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Ux Designer</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">Product Engg</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Assistant Backend Developer</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">UIUX</span>
+                <!-- Card 3 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Assistant Backend Developer</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">UIUX</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees  <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Human Resource Manager</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">IT</span>
+                <!-- Card 4 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Human Resource Manager</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">IT</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees  <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-            <!-- Card 5 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Front End Developer</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">Product Engg</span>
+                <!-- Card 5 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Front End Developer</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">Product Engg</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees  <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-            <!-- Card 6 -->
-            <div class="role-card">
-                <div class="card-header">
-                    <h3>Senior Developer</h3>
-                    <button class="edit-btn">
-                        <img src="../images/edit.svg">
-                    </button>
-                </div>
-                <div class="card-body">
-                    <div class="card-info">
-                        <img src="../images/team_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Department</span>
-                        <span class="info-value">UIUX</span>
+                <!-- Card 6 -->
+                <div class="role-card">
+                    <div class="card-header">
+                        <h3>Senior Developer</h3>
+                        <button class="edit-btn">
+                            <img src="../images/edit.svg">
+                        </button>
                     </div>
-                    <div class="card-info">
-                        <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
-                        <span class="info-label">Location</span>
-                        <span class="info-value">Hyderabad</span>
-                    </div>
-                    <div class="card-info">
-                        <span class="info-label">Total Employees</span>
-                        <div class="employee-avatars">
-                            <img src="../images/employee-image1.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <img src="../images/employee-image3.jpg" class="emp-avatar">
-                            <img src="../images/employee-image2.jpg" class="emp-avatar">
-                            <span class="more-count">+43</span>
+                    <div class="card-body">
+                        <div class="card-info">
+                            <img src="../images/team_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Department</span>
+                            <span class="info-value">UIUX</span>
+                        </div>
+                        <div class="card-info">
+                            <img src="../images/location-pin-alt-1_svgrepo.com.svg" class="info-icon">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Hyderabad</span>
+                        </div>
+                        <div class="card-info">
+                            <span class="info-label">Total Employees</span>
+                            <div class="employee-avatars">
+                                <img src="../images/employee-image1.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <img src="../images/employee-image3.jpg" class="emp-avatar">
+                                <img src="../images/employee-image2.jpg" class="emp-avatar">
+                                <span class="more-count">+43</span>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <a href="../html/roleDetails.html" class="view-link">View all Employees <img
+                                src="../images/Vector.svg"></a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <a href="../html/roleDetails.html" class="view-link">View all Employees  <img src="../images/Vector.svg"></a>
-                </div>
-            </div>
 
-        </section>
+            </section>
 
-    </main>
-</div>
+        </main>
+    </div>
 
 </body>
+
 </html>
