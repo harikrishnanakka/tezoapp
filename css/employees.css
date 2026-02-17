@@ -21,6 +21,11 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1000;
 }
 
 .logo {
@@ -96,12 +101,11 @@ body {
 }
 /* Update */
 .update-box {
-    margin-top: auto;
+    margin-top:300px;
     background: #fff3f3;
     padding: 12px;
     border-radius: 6px;
     font-size: 13px;
-    position: relative;
 }
 .install-text{
     color: red;
@@ -124,6 +128,8 @@ body {
 .main {
     flex: 1;
     padding: 20px;
+    position:relative;
+    margin-left:250px;
 }
 
 /* Top bar*/
@@ -346,6 +352,7 @@ body {
     font-size: 12px;
     color:#F55575;
     background-color: #FDE6E6;
+    border:none;
 }
 
 /* Alphabet filter */
@@ -358,13 +365,13 @@ body {
 
 .letters {
     display: flex;
-    gap: 7px;
+    gap: 7.3px;
     flex-wrap: wrap;
 }
 
 .letters span {
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -466,7 +473,7 @@ table {
     border-collapse: separate;
 }
 .table-add{
-    margin-left: 1077px;
+    margin-left: 1063px;
 }
 .actions-row td {
     border-radius: 8px 8px 0 0;
