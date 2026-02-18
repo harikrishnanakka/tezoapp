@@ -26,6 +26,8 @@ body {
     top:0;
     left:0;
     z-index: 1000;
+    overflow: hidden;
+    transition: width 0.3s ease;
 }
 
 .logo {
@@ -130,6 +132,7 @@ body {
     padding: 20px;
     position:relative;
     margin-left:250px;
+    transition: margin-left 0.3s ease;
 }
 
 /* Top bar*/
@@ -242,6 +245,7 @@ body {
     height: 32px;
     border-radius: 50%;
     z-index: 500;
+    cursor: pointer;
    
 }
 

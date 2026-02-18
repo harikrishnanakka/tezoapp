@@ -7,6 +7,7 @@
     <title>Employees</title>
     <link rel="stylesheet" href="../css/employees.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -60,7 +61,7 @@
         <!-- Main -->
         <main class="main">
             <div class="topbar-wrapper">
-                <img src="../images/handle.png" class="handle-pic" alt="handle-pic">
+                <img src="../images/handle.png" class="handle-pic" alt="handle-pic" onclick="hidehandle()">
                 <!-- Top bar -->
                 <header class="topbar">
                     <div class="search-box">
@@ -95,11 +96,11 @@
                 </div>
 
                 <div class="actions">
-                    <button class="btn-outline">
+                    <button class="btn-outline" onclick="exportTableToExcel('Employees.xlsx')">
                         <img src="../images/Interface/Export.svg" alt="interfaceimage-export">
                         EXPORT
                     </button>
-                    <button class="btn-primary-employee">
+                    <button class="btn-primary-employee" onclick="goToAddEmployee()">
                         <img src="../images/Interface/Add.svg" alt="interfaceimage-Add">
                         ADD EMPLOYEE
                     </button>
@@ -108,7 +109,8 @@
 
             <!-- Alphabet filter -->
             <section class="alphabet-filter">
-                <img src="../images/Vector.png" alt="vector-image">
+                <!-- <img src="../images/Vector.png" alt="vector-image"> -->
+                <i class="bi bi-funnel" id="alphabetFilterIcon"></i>
                 <div class="letters">
                     <span>A</span><span>B</span><span class="active">C</span><span>D</span>
                     <span>E</span><span>F</span><span>G</span><span>H</span>
@@ -154,11 +156,12 @@
             <!-- Table -->
             <section class="table-wrapper">
                 <table>
+                    <thead>
                     <tr class="actions-row">
                         <td colspan="12">
                             <div class="table-actions">
                                 <img src="../images/arrow-turn left -down.png" alt="arrow-turn-left">
-                                <button class="btn-danger">Delete</button>
+                                <button class="btn-danger" id="deleteBtn" disabled>Delete</button>
                                 <img src="../images/table-add.png" class="table-add" alt="table-img">
                             </div>
                         </td>
@@ -358,6 +361,8 @@
             </section>
         </main>
     </div>
+     <script src="../js/employees.js"></script>
+    <script src="../js/addEmployee.js"></script>
 </body>
 
 </html>
