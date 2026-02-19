@@ -1,4 +1,4 @@
-
+//sidebar minimize
 function hidehandle() {
     const sidebar = document.querySelector(".sidebar");
     const main = document.querySelector(".main");
@@ -51,7 +51,7 @@ function hidehandle() {
     }
 }
 
-//Export
+//Exporttoexcel
 function exportTableToExcel(filename, type = "xlsx") {
     try {
         const table = document.querySelector(".table-wrapper table");
@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
 
-    //  Append localStorage employees
     employees.forEach(emp => {
 
         const tr = document.createElement("tr");
@@ -230,9 +229,295 @@ deleteBtn.addEventListener("click", function () {
         row.remove();
     });
 
-    // Update localStorage
+   
     localStorage.setItem("employees", JSON.stringify(employees));
 
     deleteBtn.disabled = true;
 });
 
+
+
+//ellipseViewEditDeleteOptions
+document.addEventListener("click", function (e) {
+
+    const existingMenu = document.querySelector(".action-menu");
+    if (existingMenu) existingMenu.remove();
+
+    if (e.target.classList.contains("bi-three-dots")) {
+
+        e.stopPropagation();
+
+        const icon = e.target;
+        const row = icon.closest("tr");
+
+        const menu = document.createElement("div");
+        menu.className = "action-menu";
+
+        menu.innerHTML = `
+            <div class="action-item view">View Details</div>
+            <div class="action-item edit">Edit</div>
+            <div class="action-item delete">Delete</div>
+        `;
+
+        icon.parentElement.style.position = "relative";
+        icon.parentElement.appendChild(menu);
+
+        Object.assign(menu.style, {
+            position: "absolute",
+            right: "0",
+            top: "20px",
+            background: "#fff",
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+            zIndex: "1000",
+            minWidth: "140px"
+        });
+
+        menu.querySelectorAll(".action-item").forEach(item => {
+            item.style.padding = "8px 12px";
+            item.style.cursor = "pointer";
+
+            item.addEventListener("mouseenter", () => {
+                item.style.backgroundColor = "#f5f5f5";
+            });
+
+            item.addEventListener("mouseleave", () => {
+                item.style.backgroundColor = "#fff";
+            });
+        });
+
+        menu.addEventListener("click", function (event) {
+
+            if (event.target.classList.contains("view")) {
+                alert("View Details clicked");
+            }
+
+            if (event.target.classList.contains("edit")) {
+                alert("Edit clicked");
+            }
+
+            if (event.target.classList.contains("delete")) {
+                row.remove();
+            }
+
+            menu.remove();
+        });
+    }
+});
+
+
+
+//filterLocationStatus
+document.addEventListener('DOMContentLoaded', function () {
+    const multiSelects = document.querySelectorAll('.custom-multiselect');
+    const applyBtn = document.querySelector('.filter-right .btn-primary');
+    const resetBtn = document.querySelector('.filter-right .btn-reset');
+
+    applyBtn.disabled = true;
+    applyBtn.style.backgroundColor = '#f89191';
+    applyBtn.style.cursor = 'not-allowed';
+
+    resetBtn.disabled = true;
+    resetBtn.style.opacity = '0.5';
+    resetBtn.style.cursor = 'not-allowed';
+
+    multiSelects.forEach(function (multiSelect) {
+        const selectedText = multiSelect.querySelector('.selected-text');
+        selectedText.dataset.default = selectedText.textContent.trim();
+    });
+
+    multiSelects.forEach(function (multiSelect) {
+        const selectBox = multiSelect.querySelector('.select-box');
+        const selectedText = multiSelect.querySelector('.selected-text');
+        const checkboxes = multiSelect.querySelectorAll('input[type="checkbox"]');
+
+        selectBox.addEventListener('click', function (e) {
+            e.stopPropagation();
+            const isOpen = multiSelect.classList.contains('open');
+            closeAllDropdowns();
+            if (!isOpen) {
+                multiSelect.classList.add('open');
+            }
+        });
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const checkedCount = multiSelect.querySelectorAll('input[type="checkbox"]:checked').length;
+                selectedText.textContent = checkedCount === 0
+                    ? selectedText.dataset.default
+                    : checkedCount + ' Selected';
+                updateButtonVisibility();
+            });
+        });
+
+        multiSelect.querySelector('.checkboxes').addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+    });
+
+    document.addEventListener('click', function () {
+        closeAllDropdowns();
+    });
+
+    function closeAllDropdowns() {
+        multiSelects.forEach(function (ms) {
+            ms.classList.remove('open');
+        });
+    }
+
+    function updateButtonVisibility() {
+        const anyChecked = document.querySelector('.custom-multiselect input[type="checkbox"]:checked');
+
+        if (anyChecked) {
+            // Enable
+            applyBtn.disabled = false;
+            applyBtn.style.backgroundColor = '#e53935';
+            applyBtn.style.cursor = 'pointer';
+
+            resetBtn.disabled = false;
+            resetBtn.style.opacity = '1';
+            resetBtn.style.cursor = 'pointer';
+        } else {
+            // Disable
+            applyBtn.disabled = true;
+            applyBtn.style.backgroundColor = '#f89191';
+            applyBtn.style.cursor = 'not-allowed';
+
+            resetBtn.disabled = true;
+            resetBtn.style.opacity = '0.5';
+            resetBtn.style.cursor = 'not-allowed';
+        }
+    }
+
+    // Reset
+    resetBtn.addEventListener('click', function () {
+        if (resetBtn.disabled) return;
+
+        multiSelects.forEach(function (multiSelect) {
+            const selectedText = multiSelect.querySelector('.selected-text');
+            multiSelect.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            selectedText.textContent = selectedText.dataset.default;
+        });
+
+        closeAllDropdowns();
+        updateButtonVisibility();
+        document.querySelectorAll('tbody tr').forEach(row => row.style.display = '');
+    });
+
+    // Apply
+    applyBtn.addEventListener('click', function () {
+        if (applyBtn.disabled) return;
+
+        const filters = {};
+        multiSelects.forEach(function (multiSelect) {
+            const key = [...multiSelect.classList]
+                .find(c => c.endsWith('-filter'))
+                ?.replace('-filter', '');
+            if (key) {
+                filters[key] = [...multiSelect.querySelectorAll('input[type="checkbox"]:checked')]
+                    .map(cb => cb.value);
+            }
+        });
+
+        console.log('Filters applied:', filters);
+        closeAllDropdowns();
+        applyTableFilters(filters);
+    });
+});
+
+function applyTableFilters(filters) {
+    const rows = document.querySelectorAll('tbody tr');
+
+    rows.forEach(function (row) {
+        const location = row.querySelector('td:nth-child(3)')?.textContent.trim();
+        const department = row.querySelector('td:nth-child(4)')?.textContent.trim();
+        const status = row.querySelector('td:nth-child(7) .status')?.textContent.trim();
+
+        const locationMatch = filters.location.length === 0 || filters.location.includes(location);
+        const departmentMatch = filters.department.length === 0 || filters.department.includes(department);
+        const statusMatch = filters.status.length === 0 || filters.status.includes(status);
+
+        if (locationMatch && departmentMatch && statusMatch) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+
+
+
+// Tableheader sorting
+document.addEventListener('DOMContentLoaded', function () {
+
+    const table = document.querySelector('table');
+    const headers = table.querySelectorAll('thead tr:nth-child(2) th');
+    const tbody = table.querySelector('tbody');
+
+    const columnMap = {
+        1: 'user',
+        2: 'location',
+        3: 'department',
+        4: 'role',
+        5: 'empno',
+        6: 'status',
+        7: 'joindt'
+    };
+
+    let currentSortCol = null;
+    let currentSortOrder = 'asc';
+
+    headers.forEach(function (th, index) {
+
+        if (index === 0 || index === 8) return;
+
+        th.style.cursor = 'pointer';
+
+        th.addEventListener('click', function () {
+
+            if (currentSortCol === index) {
+                currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSortCol = index;
+                currentSortOrder = 'asc';
+            }
+
+            sortTable(index, currentSortOrder);
+        });
+    });
+
+    function sortTable(colIndex, order) {
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+
+        rows.sort(function (a, b) {
+            let aText = getCellText(a, colIndex);
+            let bText = getCellText(b, colIndex);
+
+            const aNum = Date.parse(aText) || Number(aText.replace(/\D/g, ''));
+            const bNum = Date.parse(bText) || Number(bText.replace(/\D/g, ''));
+
+            if (!isNaN(aNum) && !isNaN(bNum) && aNum !== 0 && bNum !== 0) {
+                return order === 'asc' ? aNum - bNum : bNum - aNum;
+            }
+
+            return order === 'asc'
+                ? aText.localeCompare(bText)
+                : bText.localeCompare(aText);
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
+    function getCellText(row, colIndex) {
+        const cell = row.querySelector(`td:nth-child(${colIndex + 1})`);
+        if (!cell) return '';
+        const strong = cell.querySelector('strong');
+        if (strong) return strong.textContent.trim();
+        const span = cell.querySelector('.status');
+        if (span) return span.textContent.trim();
+
+        return cell.textContent.trim();
+    }
+});

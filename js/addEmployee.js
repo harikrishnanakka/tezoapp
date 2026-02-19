@@ -34,9 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("employees", JSON.stringify(employees));
 
-        document.getElementById("successMessage").style.display = "flex";
-
         form.reset();
+        setTimeout(() => {
+            const msg = document.getElementById("successMessage");
+            msg.style.display = "flex"; 
+
+            setTimeout(() => {
+                msg.style.display = "none";
+            }, 3000);
+
+        });
 
         // setTimeout(() => {
         //     window.location.href = "../html/employees.html";

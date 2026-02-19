@@ -112,7 +112,7 @@
                 <!-- <img src="../images/Vector.png" alt="vector-image"> -->
                 <i class="bi bi-funnel" id="alphabetFilterIcon"></i>
                 <div class="letters">
-                    <span>A</span><span>B</span><span class="active">C</span><span>D</span>
+                    <span>A</span><span>B</span><span>C</span><span>D</span>
                     <span>E</span><span>F</span><span>G</span><span>H</span>
                     <span>I</span><span>J</span><span>K</span><span>L</span>
                     <span>M</span><span>N</span><span>O</span><span>P</span>
@@ -126,57 +126,75 @@
             <section class="filters">
                 <div class="filter-left">
                     <span class="filter-text">Filter</span><i class="bi bi-filter"></i>
-                    <select>
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Inactive</option>
-                    </select>
-                    <select>
-                        <option>Location</option>
-                        <option>Hyderabad</option>
-                        <option>Bengaluru</option>
-                        <option>Chennai</option>
-                        <option>Pune</option>
-                        <option>Mumbai</option>
-                    </select>
-                    <select>
-                        <option>Department</option>
-                        <option>IT</option>
-                        <option>Product Engg</option>
-                        <option>UIUX</option>
-                    </select>
-                </div>
+                    <div class="custom-multiselect status-filter">
+                        <div class="select-box">
+                            <span class="selected-text">Status</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="checkboxes">
+                            <label><input type="checkbox" value="Active"> Active</label>
+                            <label><input type="checkbox" value="Inactive"> Inactive</label>
+                        </div>
+                    </div>
 
-                <div class="filter-right">
-                    <button class="btn-reset">Reset</button>
-                    <button class="btn-primary">Apply</button>
-                </div>
+
+                    <div class="custom-multiselect location-filter">
+                        <div class="select-box">
+                            <span class="selected-text">Location</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="checkboxes">
+                            <label><input type="checkbox" value="Hyderabad"> Hyderabad</label>
+                            <label><input type="checkbox" value="Banglore"> Banglore</label>
+                            <label><input type="checkbox" value="Chennai"> Chennai</label>
+                            <label><input type="checkbox" value="Pune"> Pune</label>
+                            <label><input type="checkbox" value="Mumbai"> Mumbai</label>
+                        </div>
+                    </div>
+
+
+                    <div class="custom-multiselect department-filter">
+                        <div class="select-box">
+                            <span class="selected-text">Department</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="checkboxes">
+                            <label><input type="checkbox" value="Product Engg"> Product Engg</label>
+                            <label><input type="checkbox" value="IT"> IT</label>
+                            <label><input type="checkbox" value="UIUX"> UIUX</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-right">
+                        <button class="btn-reset">Reset</button>
+                        <button class="btn-primary">Apply</button>
+                    </div>
             </section>
 
             <!-- Table -->
             <section class="table-wrapper">
                 <table>
                     <thead>
-                    <tr class="actions-row">
-                        <td colspan="12">
-                            <div class="table-actions">
-                                <img src="../images/arrow-turn left -down.png" alt="arrow-turn-left">
-                                <button class="btn-danger" id="deleteBtn" disabled>Delete</button>
-                                <img src="../images/table-add.png" class="table-add" alt="table-img">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>USER<i class="bi bi-chevron-expand"></i></th>
-                        <th>LOCATION<i class="bi bi-chevron-expand"></i></th>
-                        <th>DEPARTMENT<i class="bi bi-chevron-expand"></i></th>
-                        <th>ROLE<i class="bi bi-chevron-expand"></i></th>
-                        <th>EMP NO<i class="bi bi-chevron-expand"></i></th>
-                        <th>STATUS<i class="bi bi-chevron-expand"></i></th>
-                        <th>JOIN DT<i class="bi bi-chevron-expand"></i></th>
-                        <th><i class="bi bi-three-dots"></i></th>
-                    </tr>
+                        <tr class="actions-row">
+                            <td colspan="12">
+                                <div class="table-actions">
+                                    <img src="../images/arrow-turn left -down.png" alt="arrow-turn-left">
+                                    <button class="btn-danger" id="deleteBtn" disabled>Delete</button>
+                                    <img src="../images/table-add.png" class="table-add" alt="table-img">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>USER<i class="bi bi-chevron-expand"></i></th>
+                            <th>LOCATION<i class="bi bi-chevron-expand"></i></th>
+                            <th>DEPARTMENT<i class="bi bi-chevron-expand"></i></th>
+                            <th>ROLE<i class="bi bi-chevron-expand"></i></th>
+                            <th>EMP NO<i class="bi bi-chevron-expand"></i></th>
+                            <th>STATUS<i class="bi bi-chevron-expand"></i></th>
+                            <th>JOIN DT<i class="bi bi-chevron-expand"></i></th>
+                            <th><i class="bi bi-three-dots"></i></th>
+                        </tr>
                     </thead>
 
                     <tbody>
@@ -361,7 +379,7 @@
             </section>
         </main>
     </div>
-     <script src="../js/employees.js"></script>
+    <script src="../js/employees.js"></script>
     <script src="../js/addEmployee.js"></script>
 </body>
 

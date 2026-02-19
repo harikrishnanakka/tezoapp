@@ -429,6 +429,7 @@ body {
 .filter-right {
     display: flex;
     gap: 10px;
+    margin-left:680px;
 }
 .filter-text{
     color: red;
@@ -469,6 +470,7 @@ body {
 .bi-chevron-expand{
     margin-left:5px;
     color: #6A6A6B;
+    cursor: pointer;
 
 }
 
@@ -546,4 +548,51 @@ tbody tr.selected {
     border-radius: 2px;
     font-size: 12px;
     display: inline-block;
+}
+
+/*SelectFilterstyling*/
+.custom-multiselect {
+    position: relative;
+    width: 90px;
+    font-size: 11px;
+}
+
+.select-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.select-box i {
+    font-size: 12px;
+}
+
+.checkboxes {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+.checkboxes label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.custom-multiselect.open .checkboxes {
+    display: block;
 }

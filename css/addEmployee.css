@@ -61,6 +61,9 @@
     transition: all 0.2s ease;
     background-color: #fafafa;
 }
+.form-group select{
+    cursor: pointer;
+}
 
 .form-group input:focus,
 .form-group select:focus {
@@ -106,7 +109,6 @@
     font-size: 12px;
     font-weight: 500;
     height:25px;
-    margin-top:2px;
 }
 
 .btn-primary:hover {
