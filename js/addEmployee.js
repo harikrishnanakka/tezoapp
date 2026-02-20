@@ -1,3 +1,4 @@
+//AddingEmployeeData
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("addEmployeeForm");
 
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.reset();
         setTimeout(() => {
             const msg = document.getElementById("successMessage");
-            msg.style.display = "flex"; 
+            msg.style.display = "flex";
 
             setTimeout(() => {
                 msg.style.display = "none";
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// ─── Load employee for View / Edit ───────────────────────────────────────────
+// ─── Load employee for View / Edit 
 
 function loadEmployeeData(mode, empId) {
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
@@ -99,12 +100,12 @@ function loadEmployeeData(mode, empId) {
 // ─── Populate Form Fields 
 
 function populateForm(emp) {
-    document.getElementById("empId").value       = emp.empId       || "";
-    document.getElementById("firstName").value   = emp.firstName   || "";
-    document.getElementById("lastName").value    = emp.lastName    || "";
-    document.getElementById("email").value       = emp.email       || "";
+    document.getElementById("empId").value = emp.empId || "";
+    document.getElementById("firstName").value = emp.firstName || "";
+    document.getElementById("lastName").value = emp.lastName || "";
+    document.getElementById("email").value = emp.email || "";
     document.getElementById("joiningDate").value = emp.joiningDate || "";
-    document.getElementById("role").value        = emp.role        || "";
+    document.getElementById("role").value = emp.role || "";
 
     setSelectValue("location", emp.location);
     setSelectValue("department", emp.department);
@@ -114,8 +115,8 @@ function populateForm(emp) {
 
 function updatePageHeader(mode) {
     const headings = {
-        view: { title: "View Employee",  subtitle: "Employee details (read-only)." },
-        edit: { title: "Edit Employee",  subtitle: "Update employee details."      },
+        view: { title: "View Employee", subtitle: "Employee details (read-only)." },
+        edit: { title: "Edit Employee", subtitle: "Update employee details." },
     };
     const { title, subtitle } = headings[mode] || {};
     if (title) document.querySelector(".page-header h2").textContent = title;
@@ -125,7 +126,6 @@ function updatePageHeader(mode) {
 // ─── View Mode 
 
 function initViewMode() {
-    // Disable all form fields
     document.querySelectorAll("#addEmployeeForm input, #addEmployeeForm select").forEach(el => {
         el.setAttribute("disabled", true);
     });
@@ -142,19 +142,19 @@ function initViewMode() {
 function initEditMode(empId) {
     document.getElementById("empId").setAttribute("disabled", true);
 
-    const saveBtn   = document.querySelector(".form-actions .btn-primary");
+    const saveBtn = document.querySelector(".form-actions .btn-primary");
     const cancelBtn = document.querySelector(".form-actions .btn-light");
 
-    saveBtn.textContent   = "Save Changes";
+    saveBtn.textContent = "Save Changes";
     cancelBtn.textContent = "Cancel";
 
     cancelBtn.addEventListener("click", () => history.back());
 
-    let submitted = false; 
+    let submitted = false;
 
     document.getElementById("addEmployeeForm").addEventListener("submit", function (e) {
         e.preventDefault();
-        if (submitted) return; 
+        if (submitted) return;
         submitted = true;
         saveEditedEmployee(empId);
     });
@@ -173,19 +173,18 @@ function saveEditedEmployee(empId) {
 
     employees[index] = {
         empId,
-        firstName:   document.getElementById("firstName").value.trim()         || existing.firstName,
-        lastName:    document.getElementById("lastName").value.trim()          || existing.lastName,
-        email:       document.getElementById("email").value.trim()             || existing.email,
-        joiningDate: document.getElementById("joiningDate").value              || existing.joiningDate,
-        location:    document.querySelector("select[name='location']").value   || existing.location,
-        department:  document.querySelector("select[name='department']").value || existing.department,
-        role:        document.getElementById("role").value.trim()              || existing.role,
-        status:      existing.status,
+        firstName: document.getElementById("firstName").value.trim() || existing.firstName,
+        lastName: document.getElementById("lastName").value.trim() || existing.lastName,
+        email: document.getElementById("email").value.trim() || existing.email,
+        joiningDate: document.getElementById("joiningDate").value || existing.joiningDate,
+        location: document.querySelector("select[name='location']").value || existing.location,
+        department: document.querySelector("select[name='department']").value || existing.department,
+        role: document.getElementById("role").value.trim() || existing.role,
+        status: existing.status,
     };
 
     localStorage.setItem("employees", JSON.stringify(employees));
 
-    // Show success message then go back
     const msg = document.getElementById("successMessage");
     msg.style.display = "flex";
     setTimeout(() => {
@@ -198,14 +197,14 @@ function saveEditedEmployee(empId) {
 
 function getFormData() {
     return {
-        empId:       document.getElementById("empId").value.trim(),
-        firstName:   document.getElementById("firstName").value.trim(),
-        lastName:    document.getElementById("lastName").value.trim(),
-        email:       document.getElementById("email").value.trim(),
+        empId: document.getElementById("empId").value.trim(),
+        firstName: document.getElementById("firstName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        email: document.getElementById("email").value.trim(),
         joiningDate: document.getElementById("joiningDate").value,
-        location:    document.querySelector("select[name='location']").value,
-        department:  document.querySelector("select[name='department']").value,
-        role:        document.getElementById("role").value.trim(),
+        location: document.querySelector("select[name='location']").value,
+        department: document.querySelector("select[name='department']").value,
+        role: document.getElementById("role").value.trim(),
     };
 }
 
@@ -220,7 +219,7 @@ function setSelectValue(name, value) {
 }
 
 
-//minimize sidebar
+
 
 //sidebar minimize
 function hidehandle() {

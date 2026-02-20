@@ -21,12 +21,12 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height:100vh;
-    position:fixed;
-    top:0;
-    left:0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1000;
-    overflow:'hidden';
+    overflow: 'hidden';
     transition: width 0.3s ease;
 }
 
@@ -57,7 +57,7 @@ body {
     width: 18px;
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
 }
 
@@ -78,29 +78,35 @@ body {
     border-bottom-left-radius: 25px;
     border-top-left-radius: 25px;
 }
+
 .menu li {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .menu li a,
 .menu li span {
     flex: 1;
     text-decoration: none;
 }
+
 .menu li.active span,
-.menu li.active a{
+.menu li.active a {
     color: #e53935;
 }
-.menu span{
-    color:#9A9DA0;
+
+.menu span {
+    color: #9A9DA0;
     font-size: 13px;
 }
-.bi{
+
+.bi {
     font-size: 14px;
     color: #9aa0a6;
 }
-.active .bi-chevron-right{
+
+.active .bi-chevron-right {
     color: red;
 }
 
@@ -120,12 +126,14 @@ body {
     margin-top: 4px;
     margin-bottom: 8px;
 }
+
 .update-actions {
     display: flex;
     gap: 10px;
     margin-top: 10px;
 }
-.install-text{
+
+.install-text {
     color: red;
 }
 
@@ -134,7 +142,7 @@ body {
     flex: 1;
     padding: 20px;
     position: relative;
-    margin-left:250px;
+    margin-left: 250px;
     transition: margin-left 0.3s ease;
 }
 
@@ -151,6 +159,7 @@ body {
     height: 53px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
+
 .topbar-left {
     display: flex;
     align-items: center;
@@ -189,7 +198,7 @@ body {
 .search-icon {
     width: 18px;
     height: 18px;
-    margin-left:-24px;
+    margin-left: -24px;
 }
 
 .search-box input {
@@ -197,14 +206,14 @@ body {
     outline: none;
     width: 100%;
     font-size: 14px;
-    color:black;
+    color: black;
 }
 
 .topbar-right {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .icon-btn {
@@ -212,14 +221,15 @@ body {
     height: 30px;
     cursor: pointer;
 }
-.green-circle{
-    width:10px;
-    height:10px;
+
+.green-circle {
+    width: 10px;
+    height: 10px;
     background-color: #28c76f;
     border-radius: 50%;
     margin-right: -40px;
     margin-bottom: -20px;
-    z-index:2;
+    z-index: 2;
 }
 
 .profile-dropdown {
@@ -231,26 +241,28 @@ body {
     border-radius: 8px;
     cursor: pointer;
 }
-.topbar-wrapper{
+
+.topbar-wrapper {
     position: relative;
-    z-index:20;
+    z-index: 20;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: -9px;
 }
 
 .handle-pic {
-    position: absolute;     
-    left: -36px;             
-    top: 50%;                
+    position: absolute;
+    left: -36px;
+    top: 50%;
     transform: translateY(-50%);
     width: 32px;
     height: 32px;
     border-radius: 50%;
     z-index: 500;
-    cursor:pointer;
-   
+    cursor: pointer;
+
 }
+
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -267,7 +279,8 @@ body {
     font-size: 14px;
     color: #0E0E0E;
 }
-.bi-chevron-down{
+
+.bi-chevron-down {
     color: #0E0E0E;
 }
 
@@ -305,8 +318,8 @@ body {
     align-items: center;
     gap: 20px;
     font-size: 12px;
-    width:140px;
-    height:32px;
+    width: 140px;
+    height: 32px;
 }
 
 /* Buttons */
@@ -319,10 +332,11 @@ body {
     cursor: pointer;
     font-size: 12px;
     font-weight: 500;
-    height:25px;
-    margin-top:2px;
+    height: 25px;
+    margin-top: 2px;
 }
-.btn-primary-addrole{
+
+.btn-primary-addrole {
     background: #e53935;
     color: #fff;
     border: none;
@@ -337,13 +351,13 @@ body {
 .btn-outline {
     background: #fff;
     border: 1px solid #ddd;
-    padding: 3px 10px; 
+    padding: 3px 10px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
-    border-color:#e53935;
-    color:#e53935;
-    height:25px;
+    border-color: #e53935;
+    color: #e53935;
+    height: 25px;
     margin-top: 2px;
     padding-bottom: 2px;
 }
@@ -355,7 +369,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
-    color:#F55575;
+    color: #F55575;
     background-color: #FDE6E6;
     border: none;
 }
@@ -371,8 +385,8 @@ body {
     margin-bottom: 15px;
     margin-top: -5px;
     border-style: solid;
-    border-color:  #fbdddd;
-    height:40px;
+    border-color: #fbdddd;
+    height: 40px;
 }
 
 .filter-left {
@@ -392,23 +406,25 @@ body {
     font-size: 10px;
     cursor: pointer;
     border-color: #FBCBCB;
-    height:28px;
-    color:#8892A6;
+    height: 28px;
+    color: #8892A6;
 }
 
 .filter-right {
     display: flex;
     gap: 10px;
 }
-.filter-text{
+
+.filter-text {
     color: red;
     padding: 5px;
 }
-.bi-filter{
-    color:red;
+
+.bi-filter {
+    color: red;
     font-size: 18px;
-    margin-left:-5px;
-    padding-right:5px;
+    margin-left: -5px;
+    padding-right: 5px;
     margin-top: 3px;
 }
 
@@ -447,6 +463,7 @@ body {
     flex: 1;
     margin-right: 10px;
 }
+
 .edit-btn {
     background: none;
     border: none;
@@ -458,8 +475,8 @@ body {
 .edit-btn img {
     width: 24px;
     height: 24px;
-    margin-right:-7px;
-    margin-top:-9px;
+    margin-right: -7px;
+    margin-top: -9px;
 }
 
 .card-body {
@@ -524,7 +541,7 @@ body {
 .card-footer {
     margin-top: 7px;
     padding-top: 4px;
-    margin-left:18px;
+    margin-left: 18px;
 }
 
 .view-link {
@@ -534,7 +551,7 @@ body {
     display: inline-flex;
     align-items: center;
     margin-left: 210px;
-    gap:4px;
+    gap: 4px;
 
 }
 

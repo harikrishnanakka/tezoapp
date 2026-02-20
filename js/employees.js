@@ -1,21 +1,22 @@
-//sidebar minimize
+//sidebar minimize(1-4)
 function hidehandle() {
     const sidebar = document.querySelector(".sidebar");
     const main = document.querySelector(".main");
-
+    const handle = document.querySelector(".main img");
     const spans = sidebar.querySelectorAll(".menu span");
     const titles = sidebar.querySelectorAll(".sidebar-title");
     const updateBox = sidebar.querySelector(".update-box");
     const menuItems = sidebar.querySelectorAll(".menu li");
     const chevrons = sidebar.querySelectorAll(".menu i");
     const logo = sidebar.querySelector(".logo");
-
     sidebar.classList.toggle("collapsed");
 
     if (sidebar.classList.contains("collapsed")) {
 
+        // Collapse
         sidebar.style.width = "70px";
         main.style.marginLeft = "85px";
+        handle.style.transform = "rotate(180deg)";
 
         spans.forEach(el => el.style.display = "none");
         titles.forEach(el => el.style.display = "none");
@@ -32,8 +33,11 @@ function hidehandle() {
 
     } else {
 
+        // Expand
         sidebar.style.width = "240px";
         main.style.marginLeft = "250px";
+
+        handle.style.transform = "rotate(0deg)";
 
         spans.forEach(el => el.style.display = "inline");
         titles.forEach(el => el.style.display = "block");
@@ -50,7 +54,7 @@ function hidehandle() {
     }
 }
 
-//Exporttoexcel
+//Exporttoexcel(5)
 function exportTableToExcel(filename, type = "xlsx") {
     try {
         const table = document.querySelector(".table-wrapper table");
@@ -106,7 +110,7 @@ function goToAddEmployee() {
 }
 
 
-// getDataFromAddEmployeeAndFilterTheAlphabet
+// getDataFromAddEmployeeAndFilterTheAlphabet(6-10)
 document.addEventListener("DOMContentLoaded", function () {
 
     const tableBody = document.querySelector("tbody");
@@ -194,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//Delete Enable and disabled
+//Delete Enable and disabled(13)
 const deleteBtn = document.getElementById("deleteBtn");
 const tableBody = document.querySelector("tbody");
 
@@ -244,7 +248,7 @@ deleteBtn.addEventListener("click", function () {
 
 
 
-//ellipseViewEditDeleteOptions
+//ellipseViewEditDeleteOptions(14)
 document.addEventListener("click", function (e) {
 
     const existingMenu = document.querySelector(".action-menu");
@@ -321,7 +325,7 @@ document.addEventListener("click", function (e) {
 
 
 
-//filterLocationStatus
+//filterLocationStatus(11-12)
 document.addEventListener('DOMContentLoaded', function () {
     const multiSelects = document.querySelectorAll('.custom-multiselect');
     const applyBtn = document.querySelector('.filter-right .btn-primary');
@@ -462,7 +466,7 @@ function applyTableFilters(filters) {
 
 
 
-// Tableheader sorting
+// Tableheader sorting(15)
 document.addEventListener('DOMContentLoaded', function () {
 
     const table = document.querySelector('table');

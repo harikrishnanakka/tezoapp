@@ -8,9 +8,10 @@
 body {
     background: #fcfcfc;
 }
+
 .app {
     display: flex;
-    min-height: 100vh; 
+    min-height: 100vh;
 }
 
 /* Sidebar */
@@ -20,10 +21,10 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    height:100vh;
-    position:fixed;
-    top:0;
-    left:0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1000;
     overflow: hidden;
     transition: width 0.3s ease;
@@ -40,6 +41,7 @@ body {
     color: #999;
     margin: 20px 10px 20px;
 }
+
 .menu li {
     list-style: none;
     display: flex;
@@ -55,7 +57,7 @@ body {
     width: 18px;
 }
 
-.menu a{
+.menu a {
     text-decoration: none;
 }
 
@@ -82,6 +84,7 @@ body {
     border-bottom-left-radius: 25px;
     border-top-left-radius: 25px;
 }
+
 .menu li {
     display: flex;
     align-items: center;
@@ -93,20 +96,23 @@ body {
     flex: 1;
     text-decoration: none;
 }
+
 .menu li.active span,
 .menu li.active a {
     color: #e53935;
 }
 
-.menu span{
-    color:#9A9DA0;
+.menu span {
+    color: #9A9DA0;
     font-size: 13px;
 }
-.bi{
+
+.bi {
     font-size: 14px;
     color: #9aa0a6;
 }
-.active .bi-chevron-right{
+
+.active .bi-chevron-right {
     color: red;
 }
 
@@ -131,7 +137,8 @@ body {
     gap: 10px;
     margin-top: 10px;
 }
-.install-text{
+
+.install-text {
     color: red;
 }
 
@@ -139,14 +146,15 @@ body {
 .main {
     flex: 1;
     padding: 15px 20px;
-    position:relative;
-    margin-left:250px;
+    position: relative;
+    margin-left: 250px;
     transition: margin-left 0.3s ease;
 }
+
 .main-inner {
-    max-width: 1400px;   
+    max-width: 1400px;
     width: 100%;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
 
 
@@ -163,6 +171,7 @@ body {
     height: 53px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
+
 .topbar-left {
     display: flex;
     align-items: center;
@@ -196,13 +205,13 @@ body {
     align-items: center;
     gap: 10px;
     padding: 0 10px;
-    
+
 }
 
 .search-icon {
     width: 18px;
     height: 18px;
-    margin-left:-24px;
+    margin-left: -24px;
 }
 
 .search-box input {
@@ -210,14 +219,14 @@ body {
     outline: none;
     width: 100%;
     font-size: 14px;
-    color:black;
+    color: black;
 }
 
 .topbar-right {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .icon-btn {
@@ -225,14 +234,15 @@ body {
     height: 30px;
     cursor: pointer;
 }
-.green-circle{
-    width:10px;
-    height:10px;
+
+.green-circle {
+    width: 10px;
+    height: 10px;
     background-color: #28c76f;
     border-radius: 50%;
     margin-right: -40px;
     margin-bottom: -20px;
-    z-index:2;
+    z-index: 2;
 }
 
 .profile-dropdown {
@@ -244,25 +254,26 @@ body {
     border-radius: 8px;
     cursor: pointer;
 }
-.topbar-wrapper{
+
+.topbar-wrapper {
     position: relative;
-    z-index:20;
+    z-index: 20;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: -4px;
 }
 
 .handle-pic {
-    position: absolute;     
-    left: -36px;             
-    top: 50%;                
+    position: absolute;
+    left: -36px;
+    top: 50%;
     transform: translateY(-50%);
     width: 32px;
     height: 32px;
     border-radius: 50%;
     z-index: 500;
     cursor: pointer;
-   
+
 }
 
 .profile-info {
@@ -281,7 +292,8 @@ body {
     font-size: 14px;
     color: #0E0E0E;
 }
-.bi-chevron-down{
+
+.bi-chevron-down {
     color: #0E0E0E;
 }
 
@@ -342,7 +354,7 @@ body {
     margin-top: -25px;
     font-size: 10px;
     width: 160px;
-    height:32px;
+    height: 32px;
 }
 
 /* Buttons */
@@ -355,8 +367,8 @@ body {
     cursor: pointer;
     font-size: 11px;
     font-weight: 500;
-    height:25px;
-    margin-top:2px;
+    height: 25px;
+    margin-top: 2px;
 }
 
 .btn-outline {
@@ -366,9 +378,9 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
-    border-color:#e53935;
-    color:#e53935;
-    height:25px;
+    border-color: #e53935;
+    color: #e53935;
+    height: 25px;
     margin-top: 2px;
     padding-bottom: 2px;
 }
@@ -380,9 +392,9 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
-    color:#F55575;
+    color: #F55575;
     background-color: #FDE6E6;
-    border:none;
+    border: none;
 }
 
 /* Role Description */
