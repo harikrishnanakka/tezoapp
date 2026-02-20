@@ -2,52 +2,51 @@
 function hidehandle() {
     const sidebar = document.querySelector(".sidebar");
     const main = document.querySelector(".main");
-    const handle = document.querySelector(".handle-pic");
 
-    const spans = sidebar.querySelectorAll("span"); 
-    const titles = sidebar.querySelectorAll(".sidebar-title"); 
-    const updateBox = sidebar.querySelector(".update-box"); 
-    const menuItems = sidebar.querySelectorAll(".menu li"); 
-    const itags=sidebar.querySelectorAll("i");
-    const image=sidebar.querySelectorAll("img");
+    const spans = sidebar.querySelectorAll(".menu span");
+    const titles = sidebar.querySelectorAll(".sidebar-title");
+    const updateBox = sidebar.querySelector(".update-box");
+    const menuItems = sidebar.querySelectorAll(".menu li");
+    const chevrons = sidebar.querySelectorAll(".menu i");
+    const logo = sidebar.querySelector(".logo");
 
-    handle.style.position = "fixed";
-    handle.style.zIndex = "9999";
-    handle.style.top = "120px"; 
+    sidebar.classList.toggle("collapsed");
 
-    if (sidebar.style.width === "55px") {
-        //  EXPAND
-        handle.style.zIndex="500";
-        sidebar.style.width = "240px";
-        main.style.marginLeft = "250px";
-        handle.style.left = "242px";
-        
-        spans.forEach(el => el.style.display = "inline");
-        titles.forEach(el => el.style.display = "block");
+    if (sidebar.classList.contains("collapsed")) {
 
-        if (updateBox) updateBox.style.display = "block";
-
-        menuItems.forEach(el => el.style.justifyContent = "flex-start");
-
-    } else {
-        //  COLLAPSE
-        sidebar.style.width = "55px";
-        main.style.marginLeft = "70px";
-        handle.style.left = "60px";
-        handle.style.zIndex="500";
-        handle.style.marginTop="-85px";
-        handle.style.marginLeft="-8px";
-        image.style.marginTop="2px";
+        sidebar.style.width = "70px";
+        main.style.marginLeft = "85px";
 
         spans.forEach(el => el.style.display = "none");
         titles.forEach(el => el.style.display = "none");
-        itags.forEach(el => el.style.display = "none");
-        
+        chevrons.forEach(el => el.style.display = "none");
 
         if (updateBox) updateBox.style.display = "none";
 
         menuItems.forEach(el => el.style.justifyContent = "center");
 
+        if (logo) {
+            logo.style.width = "40px";
+            logo.style.margin = "15px auto";
+        }
+
+    } else {
+
+        sidebar.style.width = "240px";
+        main.style.marginLeft = "250px";
+
+        spans.forEach(el => el.style.display = "inline");
+        titles.forEach(el => el.style.display = "block");
+        chevrons.forEach(el => el.style.display = "inline");
+
+        if (updateBox) updateBox.style.display = "block";
+
+        menuItems.forEach(el => el.style.justifyContent = "flex-start");
+
+        if (logo) {
+            logo.style.width = "120px";
+            logo.style.margin = "20px";
+        }
     }
 }
 
@@ -71,7 +70,7 @@ function exportTableToExcel(filename, type = "xlsx") {
         data.push(headerData);
 
         rows.forEach(row => {
-            if (row.offsetParent !== null) {  
+            if (row.offsetParent !== null) {
                 let rowData = [];
                 const cells = row.querySelectorAll("td");
 
@@ -102,8 +101,8 @@ function exportTableToExcel(filename, type = "xlsx") {
 }
 
 
-function goToAddEmployee(){
-    window.location.href="../html/addEmployee.html"
+function goToAddEmployee() {
+    window.location.href = "../html/addEmployee.html"
 }
 
 
@@ -115,33 +114,41 @@ document.addEventListener("DOMContentLoaded", function () {
     const filterIcon = document.getElementById("alphabetFilterIcon");
 
     if (!tableBody) return;
-    if (filterIcon) filterIcon.style.color = "black";
+    function renderTable() {
+        tableBody.innerHTML = "";
 
-    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+        const employees = JSON.parse(localStorage.getItem("employees")) || [];
 
-    employees.forEach(emp => {
+        employees.forEach(emp => {
+            const status = emp.status || "Active";
+            const tr = document.createElement("tr");
 
-        const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td><input type="checkbox"></td>
+                <td class="user-cell">
+                    <img src="../images/employee-image2.jpg" class="avatar">
+                    <div>
+                        <strong>${emp.firstName || ""} ${emp.lastName || ""}</strong>
+                        <small>${emp.email || ""}</small>
+                    </div>
+                </td>
+                <td>${emp.location || ""}</td>
+                <td>${emp.department || ""}</td>
+                <td>${emp.role || ""}</td>
+                <td>${emp.empId || ""}</td>
+                <td><span class="status ${status.toLowerCase()}">${status}</span></td>
+                <td>${emp.joiningDate || ""}</td>
+                <td><i class="bi bi-three-dots"></i></td>
+            `;
 
-        tr.innerHTML = `
-            <td><input type="checkbox"></td>
-            <td class="user-cell">
-                <img src="../images/employee-image2.jpg" class="avatar">
-                <div>
-                    <strong>${emp.firstName} ${emp.lastName}</strong>
-                    <small>${emp.email}</small>
-                </div>
-            </td>
-            <td>${emp.location}</td>
-            <td>${emp.department}</td>
-            <td>${emp.role}</td>
-            <td>${emp.empId}</td>
-            <td><span class="status ${emp.status.toLowerCase()}">${emp.status}</span></td>
-            <td>${emp.joiningDate}</td>
-            <td><i class="bi bi-three-dots"></i></td>
-        `;
+            tableBody.appendChild(tr);
+        });
+    }
 
-        tableBody.appendChild(tr);
+    renderTable();
+
+    window.addEventListener("pageshow", function () {
+        renderTable();
     });
 
     //  Alphabet Filter
@@ -218,8 +225,8 @@ deleteBtn.addEventListener("click", function () {
     rows.forEach(row => {
 
         const checkbox = row.querySelector("input[type='checkbox']");
-        if (!checkbox || !checkbox.checked)  return;
-        deleteBtn.style.backgroundColor="#f89191";
+        if (!checkbox || !checkbox.checked) return;
+        deleteBtn.style.backgroundColor = "#f89191";
 
         const empIdCell = row.children[5];
         const empId = empIdCell ? empIdCell.textContent.trim() : null;
@@ -229,7 +236,7 @@ deleteBtn.addEventListener("click", function () {
         row.remove();
     });
 
-   
+
     localStorage.setItem("employees", JSON.stringify(employees));
 
     deleteBtn.disabled = true;
@@ -290,14 +297,20 @@ document.addEventListener("click", function (e) {
         menu.addEventListener("click", function (event) {
 
             if (event.target.classList.contains("view")) {
-                alert("View Details clicked");
+                const empId = row.cells[5]?.textContent.trim();
+                window.location.href = `../html/addEmployee.html?mode=view&empId=${encodeURIComponent(empId)}`;
             }
 
             if (event.target.classList.contains("edit")) {
-                alert("Edit clicked");
+                const empId = row.cells[5]?.textContent.trim();
+                window.location.href = `../html/addEmployee.html?mode=edit&empId=${encodeURIComponent(empId)}`;
             }
 
             if (event.target.classList.contains("delete")) {
+                const empId = row.cells[5]?.textContent.trim();
+                let employees = JSON.parse(localStorage.getItem("employees")) || [];
+                employees = employees.filter(e => e.empId !== empId);
+                localStorage.setItem("employees", JSON.stringify(employees));
                 row.remove();
             }
 

@@ -596,3 +596,6 @@ tbody tr.selected {
 .custom-multiselect.open .checkboxes {
     display: block;
 }
+.checkboxes input{
+    cursor: pointer;
+}
