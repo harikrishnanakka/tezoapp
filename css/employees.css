@@ -22,14 +22,15 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    padding-top: -40px;
     position: fixed;
-    padding-top: 70px;
+    padding-top: 75px;
     top: 0;
     left: 0;
     z-index: 1000;
     overflow: hidden;
     transition: width 0.3s ease;
-}
+    }
 
 .logo-box {
     position: fixed;
@@ -43,13 +44,11 @@ body {
 .logo {
     width: 110px; 
     display: block;
-}
-
-.logo {
-    width: 110px;
+    min-width: 110px;
     margin-bottom: 20px;
     margin-top: 10px;
 }
+
 
 .sidebar-title {
     font-size: 12px;
@@ -165,7 +164,7 @@ body {
     border-radius: 10px;
     margin-bottom: 20px;
     gap: 20px;
-    padding-left: 40px;
+    padding-left: 20px;
     height: 53px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -254,10 +253,11 @@ body {
 
 .topbar-wrapper {
     position: relative;
-    z-index: 20;
+    /* z-index: 20; */
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: -9px;
+    /* margin-left: 0px; */
 }
 
 .handle-pic {
@@ -273,9 +273,8 @@ body {
     transition: transform 0.3s ease;
 
 }
-.rotate{
-    transform:rotate(180deg);
-
+.rotate {
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .profile-info {
@@ -646,3 +645,17 @@ tbody tr.selected {
 .checkboxes input {
     cursor: pointer;
 }
+
+/* collapse */
+.sidebar.collapsed{
+    width:80px;
+}
+.sidebar.collapsed ~ .main{
+margin-left:80px;
+
+}
+.sidebar.collapsed ~ .logo-box{
+width:80px;
+
+}
+

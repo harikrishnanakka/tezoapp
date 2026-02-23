@@ -1,38 +1,87 @@
 //sidebar minimize(1-4)
-function hidehandle() {
-    const sidebar = document.querySelector(".sidebar");
-    const main = document.querySelector(".main");
-    const handle = document.querySelector(".handle-pic");
+document.addEventListener("DOMContentLoaded", function () {
 
-    const spans = sidebar.querySelectorAll(".menu span");
-    const titles = sidebar.querySelectorAll(".sidebar-title");
-    const updateBox = sidebar.querySelector(".update-box");
-    const chevrons = sidebar.querySelectorAll(".menu i");
+    window.hidehandle = function () {
 
-    sidebar.classList.toggle("collapsed");
-    handle.classList.toggle("rotate");
+        const sidebar = document.querySelector(".sidebar");
+        const main = document.querySelector(".main");
+        const topbar = document.querySelector(".topbar-wrapper");
+        const searchBox = document.querySelector("input[type='text']");
 
-    if (sidebar.classList.contains("collapsed")) {
-        sidebar.style.width = "70px";
-        // sidebar.style.paddingTop = "70px"; 
-        main.style.marginLeft = "85px";
 
-        spans.forEach(el => el.style.display = "none");
-        titles.forEach(el => el.style.display = "none");
-        chevrons.forEach(el => el.style.display = "none");
-        if (updateBox) updateBox.style.display = "none";
+        const spans = sidebar.querySelectorAll(".menu span");
+        const titles = sidebar.querySelectorAll(".sidebar-title");
+        const updateBox = sidebar.querySelector(".update-box");
+        const chevrons = sidebar.querySelectorAll(".menu i");
+        const listItems = sidebar.querySelectorAll(".menu li");
 
-    } else {
-        sidebar.style.width = "240px";
-        // sidebar.style.paddingTop = "170px";  
-        main.style.marginLeft = "250px";
 
-        spans.forEach(el => el.style.display = "inline");
-        titles.forEach(el => el.style.display = "block");
-        chevrons.forEach(el => el.style.display = "inline");
-        if (updateBox) updateBox.style.display = "block";
+        sidebar.classList.toggle("collapsed");
+
+
+        if (sidebar.classList.contains("collapsed")) {
+
+            sidebar.style.width = "80px";
+            main.style.marginLeft = "80px";
+
+            if(topbar)
+            topbar.style.width="1230px";
+            topbar.style.marginLeft="167px";
+
+            if(searchBox)
+            searchBox.style.width="300px";
+
+
+            listItems.forEach(li=>{
+                li.style.padding="23px 20px";
+                li.style.marginTop="10px";
+            });
+
+            spans.forEach(el=> el.style.display="none");
+
+            titles.forEach(el=> el.style.display="none");
+
+            chevrons.forEach(el=> el.style.display="none");
+
+            if(updateBox)
+            updateBox.style.display="none";
+
+        }
+
+        else {
+
+            sidebar.style.width="240px";
+            main.style.marginLeft="250px";
+
+
+            if(topbar)
+            topbar.style.width="1230";
+            topbar.style.marginLeft="1px";
+
+            if(searchBox)
+            searchBox.style.width="auto";
+
+
+            listItems.forEach(li=>{
+                li.style.padding="2px";
+                li.style.gap="4px";
+                li.style.position="relative";
+            });
+
+            spans.forEach(el=> el.style.display="inline");
+
+            titles.forEach(el=> el.style.display="block");
+
+            chevrons.forEach(el=> el.style.display="inline");
+
+            if(updateBox)
+            updateBox.style.display="block";
+
+        }
+
     }
-}
+
+});
 
 //Exporttoexcel(5)
 function exportTableToExcel(filename, type = "xlsx") {
