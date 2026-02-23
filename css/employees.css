@@ -23,11 +23,26 @@ body {
     flex-direction: column;
     height: 100vh;
     position: fixed;
+    padding-top: 70px;
     top: 0;
     left: 0;
     z-index: 1000;
     overflow: hidden;
     transition: width 0.3s ease;
+}
+
+.logo-box {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    width:250px;
+    pointer-events: none;
+}
+
+.logo {
+    width: 110px; 
+    display: block;
 }
 
 .logo {
@@ -256,6 +271,10 @@ body {
     z-index: 500;
     cursor: pointer;
     transition: transform 0.3s ease;
+
+}
+.rotate{
+    transform:rotate(180deg);
 
 }
 
