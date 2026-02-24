@@ -5,83 +5,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const sidebar = document.querySelector(".sidebar");
         const main = document.querySelector(".main");
-        const topbar = document.querySelector(".topbar-wrapper");
-        const searchBox = document.querySelector("input[type='text']");
-
-
         const spans = sidebar.querySelectorAll(".menu span");
         const titles = sidebar.querySelectorAll(".sidebar-title");
         const updateBox = sidebar.querySelector(".update-box");
         const chevrons = sidebar.querySelectorAll(".menu i");
         const listItems = sidebar.querySelectorAll(".menu li");
-
+        const tezoText = document.querySelector(".logo-box span");
+        const tezoLogo = document.querySelector(".logo-box img");
+        const logoBox = document.querySelector(".logo-box");
+        const handlePic = document.querySelector(".handle-pic");
 
         sidebar.classList.toggle("collapsed");
 
-
         if (sidebar.classList.contains("collapsed")) {
 
-            sidebar.style.width = "80px";
+            sidebar.style.width = "70px";
             main.style.marginLeft = "80px";
 
-            if(topbar)
-            topbar.style.width="1230px";
-            topbar.style.marginLeft="167px";
+            spans.forEach(el => el.style.display = "none");
+            titles.forEach(el => el.style.display = "none");
+            chevrons.forEach(el => el.style.display = "none");
 
-            if(searchBox)
-            searchBox.style.width="300px";
+            if (updateBox) updateBox.style.display = "none";
+            if (tezoText) tezoText.style.display = "none";
 
+            if (tezoLogo) {
+                tezoLogo.style.width = "40px";
+                tezoLogo.style.maxWidth = "none";
+                tezoLogo.style.marginLeft = "10px";
+            }
+            if (logoBox) {
+                logoBox.style.width = "40px";
+                logoBox.style.overflow = "hidden";
+            }
 
-            listItems.forEach(li=>{
-                li.style.padding="23px 20px";
-                li.style.marginTop="10px";
+            if (handlePic) handlePic.classList.add("rotate");
+
+            listItems.forEach(li => {
+                li.style.padding = "20px";
+                li.style.marginTop = "10px";
+                li.style.justifyContent = "center";
             });
 
-            spans.forEach(el=> el.style.display="none");
+        } else {
 
-            titles.forEach(el=> el.style.display="none");
+            sidebar.style.width = "240px";
+            main.style.marginLeft = "250px";
 
-            chevrons.forEach(el=> el.style.display="none");
+            spans.forEach(el => el.style.display = "");
+            titles.forEach(el => el.style.display = "");
+            chevrons.forEach(el => el.style.display = "");
 
-            if(updateBox)
-            updateBox.style.display="none";
+            if (updateBox) updateBox.style.display = "";
+            if (tezoText) tezoText.style.display = "";
 
-        }
+            if (tezoLogo) {
+                tezoLogo.style.width = "110px";
+                tezoLogo.style.maxWidth = "";
+                tezoLogo.style.marginLeft = "";
+            }
+            if (logoBox) {
+                logoBox.style.width = "250px";
+                logoBox.style.overflow = "";
+            }
 
-        else {
+            if (handlePic) {
+                handlePic.style.left = "-36px";
+                handlePic.classList.remove("rotate");
+            }
 
-            sidebar.style.width="240px";
-            main.style.marginLeft="250px";
-
-
-            if(topbar)
-            topbar.style.width="1230";
-            topbar.style.marginLeft="1px";
-
-            if(searchBox)
-            searchBox.style.width="auto";
-
-
-            listItems.forEach(li=>{
-                li.style.padding="2px";
-                li.style.gap="4px";
-                li.style.position="relative";
+            listItems.forEach(li => {
+                li.style.padding = "";
+                li.style.marginTop = "";
+                li.style.justifyContent = "";
             });
-
-            spans.forEach(el=> el.style.display="inline");
-
-            titles.forEach(el=> el.style.display="block");
-
-            chevrons.forEach(el=> el.style.display="inline");
-
-            if(updateBox)
-            updateBox.style.display="block";
-
         }
-
-    }
-
+    };
 });
+
+
 
 //Exporttoexcel(5)
 function exportTableToExcel(filename, type = "xlsx") {

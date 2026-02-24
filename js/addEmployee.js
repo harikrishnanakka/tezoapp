@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const lastName = document.getElementById("lastName").value.trim();
         const email = document.getElementById("email").value.trim();
         const joiningDate = document.getElementById("joiningDate").value;
-        const location = document.querySelector("#addEmployeeForm select[name='location']").value;
-        const department = document.querySelector("#addEmployeeForm select[name='department']").value;
+        const location = document.getElementById("location").value;
+        const department = document.getElementById("department").value;
         const role = document.getElementById("role").value.trim();
 
         if (!empId || !firstName || !lastName || !email || !joiningDate) {
@@ -106,9 +106,8 @@ function populateForm(emp) {
     document.getElementById("email").value = emp.email || "";
     document.getElementById("joiningDate").value = emp.joiningDate || "";
     document.getElementById("role").value = emp.role || "";
-
-    setSelectValue("location", emp.location);
-    setSelectValue("department", emp.department);
+    document.getElementById("location").value = emp.location || "";
+    document.getElementById("department").value = emp.department || "";
 }
 
 // ─── Update Page Header
@@ -128,12 +127,60 @@ function updatePageHeader(mode) {
 function initViewMode() {
     document.querySelectorAll("#addEmployeeForm input, #addEmployeeForm select").forEach(el => {
         el.setAttribute("disabled", true);
+
+        el.style.backgroundColor = "#f5f5f5";
+        el.style.color = "#888";
+        el.style.cursor = "not-allowed";
+        el.style.border = "1px solid #e0e0e0";
     });
+
+    const form = document.querySelector("#addEmployeeForm");
+    const banner = document.createElement("div");
+    banner.style.cssText = `
+        background: #fff8e1;
+        border: 1px solid #ffe082;
+        border-left: 4px solid #ffc107;
+        color: #7d6200;
+        padding: 10px 16px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    `;
+    banner.innerHTML = `<i class="bi bi-eye" style="font-size:16px;color:#ffc107;"></i> <strong>View Only</strong> — This form is in read-only mode. You cannot make changes.`;
+    form.prepend(banner);
+
+    form.style.position = "relative";
+    form.style.opacity = "0.92";
+
+    const pageHeader = document.querySelector(".page-header h2");
+    if (pageHeader) {
+        const badge = document.createElement("span");
+        badge.textContent = "VIEW ONLY";
+        badge.style.cssText = `
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffc107;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        `;
+        pageHeader.appendChild(badge);
+    }
 
     document.querySelector(".form-actions .btn-primary").style.display = "none";
 
     const backBtn = document.querySelector(".form-actions .btn-light");
-    backBtn.textContent = "Back";
+    backBtn.textContent = "← Back";
+    backBtn.style.backgroundColor = "#f0f0f0";
+    backBtn.style.color = "#555";
+    backBtn.style.border = "1px solid #ccc";
     backBtn.addEventListener("click", () => history.back());
 }
 
@@ -142,16 +189,74 @@ function initViewMode() {
 function initEditMode(empId) {
     document.getElementById("empId").setAttribute("disabled", true);
 
+    const form = document.querySelector("#addEmployeeForm");
+    const banner = document.createElement("div");
+    banner.style.cssText = `
+        background: #e8f4fd;
+        border: 1px solid #90caf9;
+        border-left: 4px solid #1976d2;
+        color: #0d47a1;
+        padding: 10px 16px;
+        border-radius: 6px;
+        margin-bottom: 16px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    `;
+    banner.innerHTML = `<i class="bi bi-pencil-square" style="font-size:16px;color:#1976d2;"></i> <strong>Edit Mode</strong> — You are editing this employee's details. Save changes when done.`;
+    form.prepend(banner);
+
+    document.querySelectorAll("#addEmployeeForm input, #addEmployeeForm select").forEach(el => {
+        if (!el.hasAttribute("disabled")) {
+            el.style.border = "1px solid #90caf9";
+            el.style.backgroundColor = "#f0f7ff";
+            el.style.transition = "border 0.2s ease";
+
+            el.addEventListener("focus", () => {
+                el.style.border = "1.5px solid #1976d2";
+                el.style.backgroundColor = "#fff";
+                el.style.boxShadow = "0 0 0 3px rgba(25,118,210,0.15)";
+            });
+            el.addEventListener("blur", () => {
+                el.style.border = "1px solid #90caf9";
+                el.style.backgroundColor = "#f0f7ff";
+                el.style.boxShadow = "none";
+            });
+        }
+    });
+    const pageHeader = document.querySelector(".page-header h2");
+    if (pageHeader) {
+        const badge = document.createElement("span");
+        badge.textContent = "EDIT MODE";
+        badge.style.cssText = `
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #90caf9;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        `;
+        pageHeader.appendChild(badge);
+    }
+
     const saveBtn = document.querySelector(".form-actions .btn-primary");
-    const cancelBtn = document.querySelector(".form-actions .btn-light");
-
     saveBtn.textContent = "Save Changes";
-    cancelBtn.textContent = "Cancel";
+    saveBtn.style.backgroundColor = "#1976d2";
+    saveBtn.style.boxShadow = "0 2px 6px rgba(25,118,210,0.4)";
 
+    const cancelBtn = document.querySelector(".form-actions .btn-light");
+    cancelBtn.textContent = "X Cancel";
+    cancelBtn.style.backgroundColor = "#f5f5f5";
+    cancelBtn.style.color = "#555";
+    cancelBtn.style.border = "1px solid #ccc";
     cancelBtn.addEventListener("click", () => history.back());
 
     let submitted = false;
-
     document.getElementById("addEmployeeForm").addEventListener("submit", function (e) {
         e.preventDefault();
         if (submitted) return;
@@ -177,8 +282,8 @@ function saveEditedEmployee(empId) {
         lastName: document.getElementById("lastName").value.trim() || existing.lastName,
         email: document.getElementById("email").value.trim() || existing.email,
         joiningDate: document.getElementById("joiningDate").value || existing.joiningDate,
-        location: document.querySelector("select[name='location']").value || existing.location,
-        department: document.querySelector("select[name='department']").value || existing.department,
+        location: document.getElementById("location").value.trim() || existing.location,
+        department: document.getElementById("department").value.trim() || existing.department,
         role: document.getElementById("role").value.trim() || existing.role,
         status: existing.status,
     };
@@ -202,76 +307,103 @@ function getFormData() {
         lastName: document.getElementById("lastName").value.trim(),
         email: document.getElementById("email").value.trim(),
         joiningDate: document.getElementById("joiningDate").value,
-        location: document.querySelector("select[name='location']").value,
-        department: document.querySelector("select[name='department']").value,
+        location: document.getElementById("location").value.trim(),
+        department: document.getElementById("department").value.trim(),
         role: document.getElementById("role").value.trim(),
     };
 }
 
-function setSelectValue(name, value) {
-    const select = document.querySelector(`select[name='${name}']`);
-    if (!select || !value) return;
-    [...select.options].forEach(opt => {
-        if (opt.value === value || opt.textContent.trim() === value) {
-            opt.selected = true;
-        }
-    });
-}
+
 
 
 
 
 //sidebar minimize
-function hidehandle() {
-    const sidebar = document.querySelector(".sidebar");
-    const main = document.querySelector(".main");
+document.addEventListener("DOMContentLoaded", function () {
 
-    const spans = sidebar.querySelectorAll(".menu span");
-    const titles = sidebar.querySelectorAll(".sidebar-title");
-    const updateBox = sidebar.querySelector(".update-box");
-    const menuItems = sidebar.querySelectorAll(".menu li");
-    const chevrons = sidebar.querySelectorAll(".menu i");
-    const logo = sidebar.querySelector(".logo");
+    window.hidehandle = function () {
 
-    sidebar.classList.toggle("collapsed");
+        const sidebar = document.querySelector(".sidebar");
+        const main = document.querySelector(".main");
+        const spans = sidebar.querySelectorAll(".menu span");
+        const titles = sidebar.querySelectorAll(".sidebar-title");
+        const updateBox = sidebar.querySelector(".update-box");
+        const chevrons = sidebar.querySelectorAll(".menu i");
+        const listItems = sidebar.querySelectorAll(".menu li");
+        const tezoText = document.querySelector(".logo-box span");
+        const tezoLogo = document.querySelector(".logo-box img");
+        const logoBox = document.querySelector(".logo-box");
+        const handlePic = document.querySelector(".handle-pic");
 
-    if (sidebar.classList.contains("collapsed")) {
+        sidebar.classList.toggle("collapsed");
 
-        sidebar.style.width = "70px";
-        main.style.marginLeft = "85px";
+        if (sidebar.classList.contains("collapsed")) {
 
-        spans.forEach(el => el.style.display = "none");
-        titles.forEach(el => el.style.display = "none");
-        chevrons.forEach(el => el.style.display = "none");
+            sidebar.style.width = "70px";
+            main.style.marginLeft = "80px";
 
-        if (updateBox) updateBox.style.display = "none";
+            spans.forEach(el => el.style.display = "none");
+            titles.forEach(el => el.style.display = "none");
+            chevrons.forEach(el => el.style.display = "none");
 
-        menuItems.forEach(el => el.style.justifyContent = "center");
+            if (updateBox) updateBox.style.display = "none";
+            if (tezoText) tezoText.style.display = "none";
 
-        if (logo) {
-            logo.style.width = "40px";
-            logo.style.margin = "15px auto";
+            if (tezoLogo) {
+                tezoLogo.style.width = "40px";
+                tezoLogo.style.maxWidth = "none";
+                tezoLogo.style.marginLeft = "10px";
+            }
+            if (logoBox) {
+                logoBox.style.width = "40px";
+                logoBox.style.overflow = "hidden";
+            }
+
+            if (handlePic) handlePic.classList.add("rotate");
+
+            listItems.forEach(li => {
+                li.style.padding = "20px";
+                li.style.marginTop = "10px";
+                li.style.justifyContent = "center";
+            });
+
+        } else {
+
+            sidebar.style.width = "240px";
+            main.style.marginLeft = "250px";
+
+            spans.forEach(el => el.style.display = "");
+            titles.forEach(el => el.style.display = "");
+            chevrons.forEach(el => el.style.display = "");
+
+            if (updateBox) updateBox.style.display = "";
+            if (tezoText) tezoText.style.display = "";
+
+            if (tezoLogo) {
+                tezoLogo.style.width = "110px";
+                tezoLogo.style.maxWidth = "";
+                tezoLogo.style.marginLeft = "";
+            }
+            if (logoBox) {
+                logoBox.style.width = "250px";
+                logoBox.style.overflow = "";
+            }
+
+            if (handlePic) {
+                handlePic.style.left = "-36px";
+                handlePic.classList.remove("rotate");
+            }
+
+            listItems.forEach(li => {
+                li.style.padding = "";
+                li.style.marginTop = "";
+                li.style.justifyContent = "";
+            });
         }
+    };
+});
 
-    } else {
 
-        sidebar.style.width = "240px";
-        main.style.marginLeft = "250px";
-
-        spans.forEach(el => el.style.display = "inline");
-        titles.forEach(el => el.style.display = "block");
-        chevrons.forEach(el => el.style.display = "inline");
-
-        if (updateBox) updateBox.style.display = "block";
-
-        menuItems.forEach(el => el.style.justifyContent = "flex-start");
-
-        if (logo) {
-            logo.style.width = "120px";
-            logo.style.margin = "20px";
-        }
-    }
-}
 
 
 
