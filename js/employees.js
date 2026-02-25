@@ -184,9 +184,9 @@ function exportTableToExcel(filename, type = "xlsx") {
 }
 
 
-function goToAddEmployee() {
-    window.location.href = "../html/addEmployee.html"
-}
+// function goToAddEmployee() {
+//     window.location.href = "../html/addEmployee.html"
+// }
 
 
 // getDataFromAddEmployeeAndFilterTheAlphabet(6-10)
