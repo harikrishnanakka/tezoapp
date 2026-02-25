@@ -1,5 +1,5 @@
 //AddingEmployeeData
-document.addEventListener("DOMContentLoaded", function () {
+function addEmployeeInit() {
     const form = document.getElementById("addEmployeeForm");
 
     form.addEventListener("submit", function (e) {
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const location = document.getElementById("location").value;
         const department = document.getElementById("department").value;
         const role = document.getElementById("role").value.trim();
+        const status = document.getElementById("status").value.trim();
 
         if (!empId || !firstName || !lastName || !email || !joiningDate) {
             alert("Please fill all required fields.");
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             location,
             department,
             role,
-            status: "Active"
+            status,
         });
 
         localStorage.setItem("employees", JSON.stringify(employees));
@@ -57,8 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
         //     window.location.href = "../html/employees.html";
         // }, 1000);
     });
+}
+document.addEventListener("DOMContentLoaded", function () {
+    addEmployeeInit();
 });
-
 
 
 //viewEditModeEmployees
@@ -108,6 +111,7 @@ function populateForm(emp) {
     document.getElementById("role").value = emp.role || "";
     document.getElementById("location").value = emp.location || "";
     document.getElementById("department").value = emp.department || "";
+    document.getElementById("status").value = emp.status || "";
 }
 
 // ─── Update Page Header
@@ -285,7 +289,7 @@ function saveEditedEmployee(empId) {
         location: document.getElementById("location").value.trim() || existing.location,
         department: document.getElementById("department").value.trim() || existing.department,
         role: document.getElementById("role").value.trim() || existing.role,
-        status: existing.status,
+        status: document.getElementById("status").value.trim() || existing.status,
     };
 
     localStorage.setItem("employees", JSON.stringify(employees));
@@ -310,18 +314,16 @@ function getFormData() {
         location: document.getElementById("location").value.trim(),
         department: document.getElementById("department").value.trim(),
         role: document.getElementById("role").value.trim(),
+        status: document.getElementById("status").value.trim(),
+
     };
 }
 
 
 
 
-
-
 //sidebar minimize
-document.addEventListener("DOMContentLoaded", function () {
-
-    window.hidehandle = function () {
+function hidehandle() {
 
         const sidebar = document.querySelector(".sidebar");
         const main = document.querySelector(".main");
@@ -401,6 +403,36 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     };
+
+
+
+//profilenamedynamically
+function profileLoad() {
+
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+    const profileName = document.querySelector(".profile-info .profile-name");
+    const profileRole = document.querySelector(".profile-info .profile-role");
+
+    let adminUser = employees.find(emp =>
+        emp.role && emp.role.toLowerCase() === "admin"
+    );
+    if (!adminUser && employees.length > 0) {
+        adminUser = employees[0];
+    }
+    if (adminUser) {
+
+        profileName.textContent =
+            (adminUser.firstName || "") + " " +
+            (adminUser.lastName || "");
+
+        profileRole.textContent =
+            adminUser.role || "";
+
+    }
+
+};
+document.addEventListener("DOMContentLoaded", function () {
+    profileLoad();
 });
 
 

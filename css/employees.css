@@ -595,6 +595,15 @@ tbody tr.selected {
     display: inline-block;
 }
 
+.status.inactive{
+    background-color:#FF8A92;
+    color:red;
+    padding: 6px 12px;
+    border-radius: 2px;
+    font-size: 11px;
+    display: inline-block;
+}
+
 /*SelectFilterstyling*/
 .custom-multiselect {
     position: relative;
@@ -630,6 +639,7 @@ tbody tr.selected {
     max-height: 150px;
     overflow-y: auto;
     z-index: 999;
+    cursor:pointer;
 }
 
 .checkboxes label {
