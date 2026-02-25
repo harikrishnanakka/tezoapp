@@ -302,25 +302,6 @@ function saveEditedEmployee(empId) {
     }, 1500);
 }
 
-// ─── Helpers 
-
-function getFormData() {
-    return {
-        empId: document.getElementById("empId").value.trim(),
-        firstName: document.getElementById("firstName").value.trim(),
-        lastName: document.getElementById("lastName").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        joiningDate: document.getElementById("joiningDate").value,
-        location: document.getElementById("location").value.trim(),
-        department: document.getElementById("department").value.trim(),
-        role: document.getElementById("role").value.trim(),
-        status: document.getElementById("status").value.trim(),
-
-    };
-}
-
-
-
 
 //sidebar minimize
 function hidehandle() {
