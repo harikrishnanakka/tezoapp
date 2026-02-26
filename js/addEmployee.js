@@ -188,6 +188,11 @@ function initViewMode() {
     backBtn.addEventListener("click", () => history.back());
 }
 
+function goToEmployees(){
+    window.location.href="../html/employees.html"
+
+}
+
 // ─── Edit Mode 
 
 function initEditMode(empId) {
@@ -397,9 +402,7 @@ function profileLoad() {
     let adminUser = employees.find(emp =>
         emp.role && emp.role.toLowerCase() === "admin"
     );
-    if (!adminUser && employees.length > 0) {
-        adminUser = employees[0];
-    }
+   
     if (adminUser) {
 
         profileName.textContent =
@@ -409,6 +412,10 @@ function profileLoad() {
         profileRole.textContent =
             adminUser.role || "";
 
+    }
+    else{
+        profileName.textContent="";
+        profileRole.textContent="";
     }
 
 };

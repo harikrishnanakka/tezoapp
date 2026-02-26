@@ -87,12 +87,10 @@ function profileAddDynamically() {
     const profileName = document.querySelector(".profile-info .profile-name");
     const profileRole = document.querySelector(".profile-info .profile-role");
 
-    let adminUser = employees.find(emp =>
+    const adminUser = employees.find(emp =>
         emp.role && emp.role.toLowerCase() === "admin"
     );
-    if (!adminUser && employees.length > 0) {
-        adminUser = employees[0];
-    }
+
     if (adminUser) {
 
         profileName.textContent =
@@ -103,8 +101,14 @@ function profileAddDynamically() {
             adminUser.role || "";
 
     }
+    else {
+        profileName.textContent = "";
+        profileRole.textContent = "";
 
-};
+    }
+
+}
+document.addEventListener("DOMContentLoaded", profileAddDynamically);
 
 
 //alphabetdynamic
@@ -130,11 +134,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+function updateExportButton() {
+    const exportBtn = document.querySelector(".btn-outline");
+    if (!exportBtn) return;
+
+    const tableBody = document.querySelector("tbody");
+    if (!tableBody) return;
+
+    const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row =>
+        row.style.display !== "none"
+    );
+
+    if (visibleRows.length === 0) {
+        exportBtn.disabled = true;
+        exportBtn.style.backgroundColor = "#f5f5f5";
+        exportBtn.style.color = "#bbb";
+        exportBtn.style.border = "1px solid #ddd";
+        exportBtn.style.cursor = "not-allowed";
+        exportBtn.style.opacity = "0.6";
+        exportBtn.style.pointerEvents = "none";
+    } else {
+        exportBtn.disabled = false;
+        exportBtn.style.backgroundColor = "#fff";
+        exportBtn.style.color = "#333";
+        exportBtn.style.border = "1px solid #ccc";
+        exportBtn.style.cursor = "pointer";
+        exportBtn.style.opacity = "1";
+        exportBtn.style.pointerEvents = "auto";
+    }
+}
 
 
 
 //Exporttoexcel(5)
 function exportTableToExcel(filename, type = "xlsx") {
+
     try {
         const table = document.querySelector(".table-wrapper table");
         const rows = table.querySelectorAll("tbody tr");
@@ -184,10 +218,43 @@ function exportTableToExcel(filename, type = "xlsx") {
 }
 
 
-// function goToAddEmployee() {
-//     window.location.href = "../html/addEmployee.html"
-// }
+function goToAddEmployee() {
+    window.location.href = "../html/addEmployee.html"
+}
 
+function updateNoResultsMessage() {
+    const tableBody = document.querySelector("tbody");
+    const tableWrapper = document.querySelector(".table-wrapper");
+
+    const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row =>
+        row.style.display !== "none"
+    );
+
+    let noResults = document.getElementById("no-results-msg");
+
+    if (visibleRows.length === 0) {
+        if (!noResults) {
+            noResults = document.createElement("div");
+            noResults.id = "no-results-msg";
+            noResults.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 60px 20px;
+                color: #999;
+            `;
+            noResults.innerHTML = `
+                <p style="font-size:18px; font-weight:600; margin:16px 0 6px; color:#555;">No Results Found</p>
+                <p style="font-size:14px; color:#aaa;">Try adjusting your filters or search criteria</p>
+            `;
+            tableWrapper.appendChild(noResults);
+        }
+        noResults.style.display = "flex";
+    } else {
+        if (noResults) noResults.style.display = "none";
+    }
+}
 
 // getDataFromAddEmployeeAndFilterTheAlphabet(6-10)
 function employeeTableInit() {
@@ -203,18 +270,68 @@ function employeeTableInit() {
     if (!tableBody) return;
     function generateDynamicFilters() {
 
-        const employees = JSON.parse(localStorage.getItem("employees")) || [];
-        const statusSet = new Set();
-        const locationSet = new Set();
-        const departmentSet = new Set();
+        const employees =
+            JSON.parse(
+                localStorage.getItem("employees")
+            ) || [];
+
+        const statusSet =
+            new Set();
+
+        const locationSet =
+            new Set();
+
+        const departmentSet =
+            new Set();
+
         employees.forEach(emp => {
-            if (emp.status) statusSet.add(emp.status);
-            if (emp.location) locationSet.add(emp.location);
-            if (emp.department) departmentSet.add(emp.department);
+
+            if (emp.status) {
+
+                statusSet.add(
+                    emp.status.trim()
+                );
+
+            }
+
+            if (emp.location) {
+
+                locationSet.add(
+                    emp.location
+                        .trim()
+                        .toLowerCase()
+                );
+
+            }
+
+            if (emp.department) {
+
+                departmentSet.add(
+                    emp.department.trim()
+                );
+
+            }
+
         });
-        createCheckboxes(".status-filter .checkboxes", statusSet);
-        createCheckboxes(".location-filter .checkboxes", locationSet);
-        createCheckboxes(".department-filter .checkboxes", departmentSet);
+
+        createCheckboxes(
+            ".status-filter .checkboxes",
+            statusSet
+        );
+
+        createCheckboxes(
+            ".location-filter .checkboxes",
+            [...locationSet]
+                .map(l =>
+                    l.charAt(0).toUpperCase() +
+                    l.slice(1)
+                )
+        );
+
+        createCheckboxes(
+            ".department-filter .checkboxes",
+            departmentSet
+        );
 
     }
 
@@ -264,8 +381,23 @@ function employeeTableInit() {
 
             tableBody.appendChild(tr);
         });
+        updateExportButton();
+        updateNoResultsMessage();
+        const headerCheckbox = document.querySelector("thead tr:nth-child(2) th input[type='checkbox']");
+        if (headerCheckbox) {
+            headerCheckbox.addEventListener("change", function () {
+                const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row =>
+                    row.style.display !== "none"
+                );
+                visibleRows.forEach(row => {
+                    const cb = row.querySelector("input[type='checkbox']");
+                    if (cb) cb.checked = this.checked;
+                });
+                toggleDeleteButton();
+            });
+        }
+
     }
-    refreshTableOnLoad();
     renderTable();
     generateDynamicFilters();
 
@@ -293,6 +425,10 @@ function employeeTableInit() {
                 letters.forEach(l => l.classList.remove("active"));
                 rows.forEach(row => row.style.display = "");
                 if (filterIcon) filterIcon.style.color = "black";
+                updateExportButton();
+                toggleDeleteButton();
+                updateNoResultsMessage();
+                updateButtonVisibility();
                 return;
             }
 
@@ -310,15 +446,73 @@ function employeeTableInit() {
 
                 const firstLetter = fullName.charAt(0).toUpperCase();
 
-                if (firstLetter === selectedLetter) {
+                const status =
+                    row.querySelector(
+                        "td:nth-child(7) .status"
+                    )?.textContent.trim();
+
+                const location =
+                    row.querySelector(
+                        "td:nth-child(3)"
+                    )?.textContent.trim();
+
+                const department =
+                    row.querySelector(
+                        "td:nth-child(4)"
+                    )?.textContent.trim();
+
+                const selectedStatus =
+                    [...document.querySelectorAll(
+                        ".status-filter input:checked"
+                    )].map(cb => cb.value);
+
+                const selectedLocation =
+                    [...document.querySelectorAll(
+                        ".location-filter input:checked"
+                    )].map(cb => cb.value);
+
+                const selectedDepartment =
+                    [...document.querySelectorAll(
+                        ".department-filter input:checked"
+                    )].map(cb => cb.value);
+
+                const alphabetMatch =
+                    firstLetter === selectedLetter;
+
+                const statusMatch =
+                    selectedStatus.length === 0 ||
+                    selectedStatus.includes(status);
+
+                const locationMatch =
+                    selectedLocation.length === 0 ||
+                    selectedLocation.includes(location);
+
+                const departmentMatch =
+                    selectedDepartment.length === 0 ||
+                    selectedDepartment.includes(department);
+
+                if (
+                    alphabetMatch &&
+                    statusMatch &&
+                    locationMatch &&
+                    departmentMatch
+                ) {
                     row.style.display = "";
-                } else {
-                    row.style.display = "none";
                 }
+                else {
+                    row.style.display = "none";
+                    const cb = row.querySelector("input[type='checkbox']");
+                    if (cb) cb.checked = false;
+                }
+
 
             });
 
             if (filterIcon) filterIcon.style.color = "#e53935";
+            updateExportButton();
+            toggleDeleteButton();
+            updateNoResultsMessage();
+            updateButtonVisibility();
         });
 
     });
@@ -333,6 +527,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleDeleteButton() {
     const deleteBtn = document.getElementById("deleteBtn");
     const tableBody = document.querySelector("tbody");
+    const headerCheckbox = document.querySelector("thead tr:nth-child(2) th input[type='checkbox']");
     const checkboxes = tableBody.querySelectorAll("input[type='checkbox']");
     const isAnyChecked = Array.from(checkboxes).some(cb => cb.checked);
     deleteBtn.disabled = !isAnyChecked;
@@ -341,6 +536,22 @@ function toggleDeleteButton() {
     } else {
         deleteBtn.style.backgroundColor = "#f89191";
     }
+
+    const visibleRows = [...tableBody.querySelectorAll("tr")].filter(row =>
+        row.style.display !== "none"
+    );
+    const visibleCheckboxes = visibleRows
+        .map(row => row.querySelector("input[type='checkbox']"))
+        .filter(Boolean);
+    const isAllChecked = visibleCheckboxes.length > 0 && visibleCheckboxes.every(cb => cb.checked);
+
+    if (headerCheckbox) {
+        headerCheckbox.checked = isAllChecked;
+        headerCheckbox.indeterminate = isAnyChecked && !isAllChecked;
+    }
+
+    deleteBtn.disabled = !isAnyChecked;
+    deleteBtn.style.backgroundColor = isAnyChecked ? "red" : "#f89191";
 }
 
 
@@ -353,7 +564,7 @@ function setupDeleteFunction() {
 
     deleteBtn.addEventListener("click", function () {
         const rows = tableBody.querySelectorAll("tr");
-    let employees = JSON.parse(localStorage.getItem("employees")) || [];
+        let employees = JSON.parse(localStorage.getItem("employees")) || [];
 
         rows.forEach(row => {
 
@@ -383,6 +594,8 @@ function setupDeleteFunction() {
         );
         deleteBtn.disabled = true;
         deleteBtn.style.backgroundColor = "#f89191";
+        updateExportButton();
+        updateNoResultsMessage();
 
     });
 
@@ -460,16 +673,47 @@ function setupEllipseOptions() {
                     employees = employees.filter(e => e.empId !== empId);
                     localStorage.setItem("employees", JSON.stringify(employees));
                     row.remove();
+                    updateExportButton();
+                    updateNoResultsMessage();
                 }
 
                 menu.remove();
+
             });
         }
     });
+
 }
 document.addEventListener("DOMContentLoaded", setupEllipseOptions);
 
+function updateButtonVisibility() {
+    const anyChecked = document.querySelector('.custom-multiselect input[type="checkbox"]:checked');
+    const anyLetterActive = document.querySelector('.letters span.active');
+    const applyBtn = document.querySelector('.filter-right .btn-primary');
+    const resetBtn = document.querySelector('.filter-right .btn-reset');
 
+    if (!applyBtn || !resetBtn) return;
+
+    if (anyChecked || anyLetterActive) {
+        // Enable
+        applyBtn.disabled = false;
+        applyBtn.style.backgroundColor = '#e53935';
+        applyBtn.style.cursor = 'pointer';
+
+        resetBtn.disabled = false;
+        resetBtn.style.opacity = '1';
+        resetBtn.style.cursor = 'pointer';
+    } else {
+        // Disable
+        applyBtn.disabled = true;
+        applyBtn.style.backgroundColor = '#f89191';
+        applyBtn.style.cursor = 'not-allowed';
+
+        resetBtn.disabled = true;
+        resetBtn.style.opacity = '0.5';
+        resetBtn.style.cursor = 'not-allowed';
+    }
+}
 
 //filterLocationStatus(11-12)
 function setupFilters() {
@@ -546,29 +790,6 @@ function setupFilters() {
         });
     }
 
-    function updateButtonVisibility() {
-        const anyChecked = document.querySelector('.custom-multiselect input[type="checkbox"]:checked');
-
-        if (anyChecked) {
-            // Enable
-            applyBtn.disabled = false;
-            applyBtn.style.backgroundColor = '#e53935';
-            applyBtn.style.cursor = 'pointer';
-
-            resetBtn.disabled = false;
-            resetBtn.style.opacity = '1';
-            resetBtn.style.cursor = 'pointer';
-        } else {
-            // Disable
-            applyBtn.disabled = true;
-            applyBtn.style.backgroundColor = '#f89191';
-            applyBtn.style.cursor = 'not-allowed';
-
-            resetBtn.disabled = true;
-            resetBtn.style.opacity = '0.5';
-            resetBtn.style.cursor = 'not-allowed';
-        }
-    }
 
     // Reset
     resetBtn.addEventListener('click', function () {
@@ -580,8 +801,39 @@ function setupFilters() {
             selectedText.textContent = selectedText.dataset.default;
         });
 
+        document.querySelectorAll('.letters span')
+            .forEach(letter => {
+                letter.classList
+                    .remove('active');
+
+            });
+
+        document.querySelectorAll('tbody tr')
+            .forEach(row => {
+                row.style.display = '';
+                const cb = row.querySelector("input[type='checkbox']");
+                if (cb) cb.checked = false;
+            });
+
+        const filterIcon =
+            document.getElementById("alphabetFilterIcon");
+
+        if (filterIcon) {
+
+            filterIcon.style.color = "black";
+
+        }
+        const headerCheckbox = document.querySelector("thead tr:nth-child(2) th input[type='checkbox']");
+        if (headerCheckbox) {
+            headerCheckbox.checked = false;
+            headerCheckbox.indeterminate = false;
+        }
+
         closeAllDropdowns();
         updateButtonVisibility();
+        updateExportButton();
+        toggleDeleteButton();
+        updateNoResultsMessage();
         document.querySelectorAll('tbody tr').forEach(row => row.style.display = '');
     });
 
@@ -607,22 +859,65 @@ document.addEventListener("DOMContentLoaded", setupFilters);
 
 function applyTableFilters(filters) {
     const rows = document.querySelectorAll('tbody tr');
+    const activeLetter = document.querySelector('.letters span.active');
 
     rows.forEach(function (row) {
-        const location = row.querySelector('td:nth-child(3)')?.textContent.trim();
-        const department = row.querySelector('td:nth-child(4)')?.textContent.trim();
-        const status = row.querySelector('td:nth-child(7) .status')?.textContent.trim();
 
-        const locationMatch = filters.location.length === 0 || filters.location.includes(location);
-        const departmentMatch = filters.department.length === 0 || filters.department.includes(department);
-        const statusMatch = filters.status.length === 0 || filters.status.includes(status);
+        const name =
+            row.querySelector(
+                '.user-cell strong'
+            )?.textContent.trim();
 
-        if (locationMatch && departmentMatch && statusMatch) {
+        const firstLetter =
+            name ?
+                name.charAt(0).toUpperCase()
+                : "";
+
+        const location =
+            row.querySelector(
+                'td:nth-child(3)'
+            )?.textContent.trim();
+
+        const department =
+            row.querySelector(
+                'td:nth-child(4)'
+            )?.textContent.trim();
+
+        const status =
+            row.querySelector(
+                'td:nth-child(7) .status'
+            )?.textContent.trim();
+
+
+        const alphabetMatch =
+            !activeLetter ||
+            firstLetter ===
+            activeLetter.textContent.trim();
+
+
+        const locationMatch =
+            filters.location.length === 0 ||
+            filters.location.includes(location);
+
+        const departmentMatch =
+            filters.department.length === 0 ||
+            filters.department.includes(department);
+
+        const statusMatch =
+            filters.status.length === 0 ||
+            filters.status.includes(status);
+
+        if (alphabetMatch && locationMatch && departmentMatch && statusMatch) {
             row.style.display = '';
         } else {
             row.style.display = 'none';
+            const cb = row.querySelector("input[type='checkbox']");
+            if (cb) cb.checked = false;
         }
     });
+    updateExportButton();
+    toggleDeleteButton();
+    updateNoResultsMessage();
 }
 
 
