@@ -1,87 +1,135 @@
 //sidebar minimize(1-4)
+function hidehandle() {
+
+    const sidebar = document.querySelector(".sidebar");
+    const main = document.querySelector(".main");
+    const spans = sidebar.querySelectorAll(".menu span");
+    const titles = sidebar.querySelectorAll(".sidebar-title");
+    const updateBox = sidebar.querySelector(".update-box");
+    const chevrons = sidebar.querySelectorAll(".menu i");
+    const listItems = sidebar.querySelectorAll(".menu li");
+    const tezoText = document.querySelector(".logo-box span");
+    const tezoLogo = document.querySelector(".logo-box img");
+    const logoBox = document.querySelector(".logo-box");
+    const handlePic = document.querySelector(".handle-pic");
+
+    sidebar.classList.toggle("collapsed");
+
+    if (sidebar.classList.contains("collapsed")) {
+
+        sidebar.style.width = "70px";
+        main.style.marginLeft = "80px";
+
+        spans.forEach(el => el.style.display = "none");
+        titles.forEach(el => el.style.display = "none");
+        chevrons.forEach(el => el.style.display = "none");
+
+        if (updateBox) updateBox.style.display = "none";
+        if (tezoText) tezoText.style.display = "none";
+
+        if (tezoLogo) {
+            tezoLogo.style.width = "40px";
+            tezoLogo.style.maxWidth = "none";
+            tezoLogo.style.marginLeft = "10px";
+        }
+        if (logoBox) {
+            logoBox.style.width = "40px";
+            logoBox.style.overflow = "hidden";
+        }
+
+        if (handlePic) handlePic.classList.add("rotate");
+
+        listItems.forEach(li => {
+            li.style.padding = "20px";
+            li.style.marginTop = "10px";
+            li.style.justifyContent = "center";
+        });
+
+    } else {
+
+        sidebar.style.width = "240px";
+        main.style.marginLeft = "250px";
+
+        spans.forEach(el => el.style.display = "");
+        titles.forEach(el => el.style.display = "");
+        chevrons.forEach(el => el.style.display = "");
+
+        if (updateBox) updateBox.style.display = "";
+        if (tezoText) tezoText.style.display = "";
+
+        if (tezoLogo) {
+            tezoLogo.style.width = "110px";
+            tezoLogo.style.maxWidth = "";
+            tezoLogo.style.marginLeft = "";
+        }
+        if (logoBox) {
+            logoBox.style.width = "250px";
+            logoBox.style.overflow = "";
+        }
+
+        if (handlePic) {
+            handlePic.style.left = "-36px";
+            handlePic.classList.remove("rotate");
+        }
+
+        listItems.forEach(li => {
+            li.style.padding = "";
+            li.style.marginTop = "";
+            li.style.justifyContent = "";
+        });
+    }
+};
+
+//profileNameadddynamically
+function profileAddDynamically() {
+
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+    const profileName = document.querySelector(".profile-info .profile-name");
+    const profileRole = document.querySelector(".profile-info .profile-role");
+
+    let adminUser = employees.find(emp =>
+        emp.role && emp.role.toLowerCase() === "admin"
+    );
+    if (!adminUser && employees.length > 0) {
+        adminUser = employees[0];
+    }
+    if (adminUser) {
+
+        profileName.textContent =
+            (adminUser.firstName || "") + " " +
+            (adminUser.lastName || "");
+
+        profileRole.textContent =
+            adminUser.role || "";
+
+    }
+
+};
+
+
+//alphabetdynamic
+function createAlphabets() {
+
+    const container = document.querySelector(".letters");
+    const alphabets = Array.from({ length: 26 }, (_, i) =>
+        String.fromCharCode(65 + i)
+    );
+    alphabets.forEach(letter => {
+
+        const span = document.createElement("span");
+        span.textContent = letter;
+
+        container.appendChild(span);
+
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 
-    window.hidehandle = function () {
+    createAlphabets();
 
-        const sidebar = document.querySelector(".sidebar");
-        const main = document.querySelector(".main");
-        const spans = sidebar.querySelectorAll(".menu span");
-        const titles = sidebar.querySelectorAll(".sidebar-title");
-        const updateBox = sidebar.querySelector(".update-box");
-        const chevrons = sidebar.querySelectorAll(".menu i");
-        const listItems = sidebar.querySelectorAll(".menu li");
-        const tezoText = document.querySelector(".logo-box span");
-        const tezoLogo = document.querySelector(".logo-box img");
-        const logoBox = document.querySelector(".logo-box");
-        const handlePic = document.querySelector(".handle-pic");
-
-        sidebar.classList.toggle("collapsed");
-
-        if (sidebar.classList.contains("collapsed")) {
-
-            sidebar.style.width = "70px";
-            main.style.marginLeft = "80px";
-
-            spans.forEach(el => el.style.display = "none");
-            titles.forEach(el => el.style.display = "none");
-            chevrons.forEach(el => el.style.display = "none");
-
-            if (updateBox) updateBox.style.display = "none";
-            if (tezoText) tezoText.style.display = "none";
-
-            if (tezoLogo) {
-                tezoLogo.style.width = "40px";
-                tezoLogo.style.maxWidth = "none";
-                tezoLogo.style.marginLeft = "10px";
-            }
-            if (logoBox) {
-                logoBox.style.width = "40px";
-                logoBox.style.overflow = "hidden";
-            }
-
-            if (handlePic) handlePic.classList.add("rotate");
-
-            listItems.forEach(li => {
-                li.style.padding = "20px";
-                li.style.marginTop = "10px";
-                li.style.justifyContent = "center";
-            });
-
-        } else {
-
-            sidebar.style.width = "240px";
-            main.style.marginLeft = "250px";
-
-            spans.forEach(el => el.style.display = "");
-            titles.forEach(el => el.style.display = "");
-            chevrons.forEach(el => el.style.display = "");
-
-            if (updateBox) updateBox.style.display = "";
-            if (tezoText) tezoText.style.display = "";
-
-            if (tezoLogo) {
-                tezoLogo.style.width = "110px";
-                tezoLogo.style.maxWidth = "";
-                tezoLogo.style.marginLeft = "";
-            }
-            if (logoBox) {
-                logoBox.style.width = "250px";
-                logoBox.style.overflow = "";
-            }
-
-            if (handlePic) {
-                handlePic.style.left = "-36px";
-                handlePic.classList.remove("rotate");
-            }
-
-            listItems.forEach(li => {
-                li.style.padding = "";
-                li.style.marginTop = "";
-                li.style.justifyContent = "";
-            });
-        }
-    };
 });
+
 
 
 
@@ -136,26 +184,64 @@ function exportTableToExcel(filename, type = "xlsx") {
 }
 
 
-function goToAddEmployee() {
-    window.location.href = "../html/addEmployee.html"
-}
+// function goToAddEmployee() {
+//     window.location.href = "../html/addEmployee.html"
+// }
 
 
 // getDataFromAddEmployeeAndFilterTheAlphabet(6-10)
-document.addEventListener("DOMContentLoaded", function () {
+function employeeTableInit() {
 
     const tableBody = document.querySelector("tbody");
     const letters = document.querySelectorAll(".letters span");
     const filterIcon = document.getElementById("alphabetFilterIcon");
 
+    const employees = JSON.parse(localStorage.getItem("employees")) || [];
+    const profileName = document.querySelector(".profile-name");
+    const profileRole = document.querySelector(".profile-role");
+
     if (!tableBody) return;
+    function generateDynamicFilters() {
+
+        const employees = JSON.parse(localStorage.getItem("employees")) || [];
+        const statusSet = new Set();
+        const locationSet = new Set();
+        const departmentSet = new Set();
+        employees.forEach(emp => {
+            if (emp.status) statusSet.add(emp.status);
+            if (emp.location) locationSet.add(emp.location);
+            if (emp.department) departmentSet.add(emp.department);
+        });
+        createCheckboxes(".status-filter .checkboxes", statusSet);
+        createCheckboxes(".location-filter .checkboxes", locationSet);
+        createCheckboxes(".department-filter .checkboxes", departmentSet);
+
+    }
+
+
+    function createCheckboxes(selector, dataSet) {
+
+        const container = document.querySelector(selector);
+        if (!container) return;
+        container.innerHTML = "";
+        dataSet.forEach(value => {
+            const label = document.createElement("label");
+            label.innerHTML = `
+            <input type="checkbox" value="${value}">
+            ${value}
+        `;
+            container.appendChild(label);
+
+        });
+
+    }
     function renderTable() {
         tableBody.innerHTML = "";
 
         const employees = JSON.parse(localStorage.getItem("employees")) || [];
 
         employees.forEach(emp => {
-            const status = emp.status || "Active";
+            const status = emp.status || "Active" || "Inactive";
             const tr = document.createElement("tr");
 
             tr.innerHTML = `
@@ -179,12 +265,22 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(tr);
         });
     }
-
+    refreshTableOnLoad();
     renderTable();
+    generateDynamicFilters();
 
-    window.addEventListener("pageshow", function () {
-        renderTable();
+    document.addEventListener("change", function (e) {
+
+        if (e.target.matches("tbody input[type='checkbox']")) {
+            toggleDeleteButton();
+        }
+
     });
+
+    function refreshTableOnLoad() {
+        renderTable();
+        generateDynamicFilters();
+    }
 
     //  Alphabet Filter
     letters.forEach(letter => {
@@ -227,13 +323,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+}
+document.addEventListener("DOMContentLoaded", function () {
+    employeeTableInit();
 });
 
-//Delete Enable and disabled(13)
-const deleteBtn = document.getElementById("deleteBtn");
-const tableBody = document.querySelector("tbody");
 
+//Delete Enable and disabled(13)
 function toggleDeleteButton() {
+    const deleteBtn = document.getElementById("deleteBtn");
+    const tableBody = document.querySelector("tbody");
     const checkboxes = tableBody.querySelectorAll("input[type='checkbox']");
     const isAnyChecked = Array.from(checkboxes).some(cb => cb.checked);
     deleteBtn.disabled = !isAnyChecked;
@@ -244,120 +343,136 @@ function toggleDeleteButton() {
     }
 }
 
-// Enable/Disable button
-tableBody.addEventListener("change", function (e) {
-    if (e.target.type === "checkbox") {
-        toggleDeleteButton();
-    }
-});
 
 // DELETE FUNCTION
-deleteBtn.addEventListener("click", function () {
+function setupDeleteFunction() {
 
-    const rows = tableBody.querySelectorAll("tr");
+    const deleteBtn = document.getElementById("deleteBtn");
+    const tableBody = document.querySelector("tbody");
+    if (!deleteBtn || !tableBody) return;
+
+    deleteBtn.addEventListener("click", function () {
+        const rows = tableBody.querySelectorAll("tr");
     let employees = JSON.parse(localStorage.getItem("employees")) || [];
 
-    rows.forEach(row => {
+        rows.forEach(row => {
 
-        const checkbox = row.querySelector("input[type='checkbox']");
-        if (!checkbox || !checkbox.checked) return;
+            const checkbox =
+                row.querySelector("input[type='checkbox']");
+
+            if (!checkbox || !checkbox.checked) return;
+
+            const empIdCell = row.children[5];
+
+            const empId =
+                empIdCell ?
+                    empIdCell.textContent.trim()
+                    : null;
+
+            employees =
+                employees.filter(emp =>
+                    emp.empId !== empId
+                );
+
+            row.remove();
+
+        });
+        localStorage.setItem(
+            "employees",
+            JSON.stringify(employees)
+        );
+        deleteBtn.disabled = true;
         deleteBtn.style.backgroundColor = "#f89191";
 
-        const empIdCell = row.children[5];
-        const empId = empIdCell ? empIdCell.textContent.trim() : null;
-
-        employees = employees.filter(emp => emp.empId !== empId);
-
-        row.remove();
     });
 
-
-    localStorage.setItem("employees", JSON.stringify(employees));
-
-    deleteBtn.disabled = true;
-});
+};
+document.addEventListener("DOMContentLoaded", setupDeleteFunction);
 
 
 
 //ellipseViewEditDeleteOptions(14)
-document.addEventListener("click", function (e) {
+function setupEllipseOptions() {
+    document.addEventListener("click", function (e) {
 
-    const existingMenu = document.querySelector(".action-menu");
-    if (existingMenu) existingMenu.remove();
+        const existingMenu = document.querySelector(".action-menu");
+        if (existingMenu) existingMenu.remove();
 
-    if (e.target.classList.contains("bi-three-dots")) {
+        if (e.target.classList.contains("bi-three-dots")) {
 
-        e.stopPropagation();
+            e.stopPropagation();
 
-        const icon = e.target;
-        const row = icon.closest("tr");
+            const icon = e.target;
+            const row = icon.closest("tr");
 
-        const menu = document.createElement("div");
-        menu.className = "action-menu";
+            const menu = document.createElement("div");
+            menu.className = "action-menu";
 
-        menu.innerHTML = `
+            menu.innerHTML = `
             <div class="action-item view">View Details</div>
             <div class="action-item edit">Edit</div>
             <div class="action-item delete">Delete</div>
         `;
 
-        icon.parentElement.style.position = "relative";
-        icon.parentElement.appendChild(menu);
+            icon.parentElement.style.position = "relative";
+            icon.parentElement.appendChild(menu);
 
-        Object.assign(menu.style, {
-            position: "absolute",
-            right: "0",
-            top: "20px",
-            background: "#fff",
-            border: "1px solid #ddd",
-            borderRadius: "6px",
-            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-            zIndex: "1000",
-            minWidth: "140px"
-        });
-
-        menu.querySelectorAll(".action-item").forEach(item => {
-            item.style.padding = "8px 12px";
-            item.style.cursor = "pointer";
-
-            item.addEventListener("mouseenter", () => {
-                item.style.backgroundColor = "#f5f5f5";
+            Object.assign(menu.style, {
+                position: "absolute",
+                right: "0",
+                top: "20px",
+                background: "#fff",
+                border: "1px solid #ddd",
+                borderRadius: "6px",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                zIndex: "1000",
+                minWidth: "140px"
             });
 
-            item.addEventListener("mouseleave", () => {
-                item.style.backgroundColor = "#fff";
+            menu.querySelectorAll(".action-item").forEach(item => {
+                item.style.padding = "8px 12px";
+                item.style.cursor = "pointer";
+
+                item.addEventListener("mouseenter", () => {
+                    item.style.backgroundColor = "#f5f5f5";
+                });
+
+                item.addEventListener("mouseleave", () => {
+                    item.style.backgroundColor = "#fff";
+                });
             });
-        });
 
-        menu.addEventListener("click", function (event) {
+            menu.addEventListener("click", function (event) {
 
-            if (event.target.classList.contains("view")) {
-                const empId = row.cells[5]?.textContent.trim();
-                window.location.href = `../html/addEmployee.html?mode=view&empId=${encodeURIComponent(empId)}`;
-            }
+                if (event.target.classList.contains("view")) {
+                    const empId = row.cells[5]?.textContent.trim();
+                    window.location.href = `../html/addEmployee.html?mode=view&empId=${encodeURIComponent(empId)}`;
+                }
 
-            if (event.target.classList.contains("edit")) {
-                const empId = row.cells[5]?.textContent.trim();
-                window.location.href = `../html/addEmployee.html?mode=edit&empId=${encodeURIComponent(empId)}`;
-            }
+                if (event.target.classList.contains("edit")) {
+                    const empId = row.cells[5]?.textContent.trim();
+                    window.location.href = `../html/addEmployee.html?mode=edit&empId=${encodeURIComponent(empId)}`;
+                }
 
-            if (event.target.classList.contains("delete")) {
-                const empId = row.cells[5]?.textContent.trim();
-                let employees = JSON.parse(localStorage.getItem("employees")) || [];
-                employees = employees.filter(e => e.empId !== empId);
-                localStorage.setItem("employees", JSON.stringify(employees));
-                row.remove();
-            }
+                if (event.target.classList.contains("delete")) {
+                    const empId = row.cells[5]?.textContent.trim();
+                    let employees = JSON.parse(localStorage.getItem("employees")) || [];
+                    employees = employees.filter(e => e.empId !== empId);
+                    localStorage.setItem("employees", JSON.stringify(employees));
+                    row.remove();
+                }
 
-            menu.remove();
-        });
-    }
-});
+                menu.remove();
+            });
+        }
+    });
+}
+document.addEventListener("DOMContentLoaded", setupEllipseOptions);
 
 
 
 //filterLocationStatus(11-12)
-document.addEventListener('DOMContentLoaded', function () {
+function setupFilters() {
     const multiSelects = document.querySelectorAll('.custom-multiselect');
     const applyBtn = document.querySelector('.filter-right .btn-primary');
     const resetBtn = document.querySelector('.filter-right .btn-reset');
@@ -389,14 +504,31 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-                const checkedCount = multiSelect.querySelectorAll('input[type="checkbox"]:checked').length;
-                selectedText.textContent = checkedCount === 0
-                    ? selectedText.dataset.default
-                    : checkedCount + ' Selected';
+        multiSelect.addEventListener('change', function (e) {
+            if (e.target.type === "checkbox") {
+                const selectedText = multiSelect.querySelector('.selected-text');
+                const checkedCount =
+                    multiSelect.querySelectorAll('input[type="checkbox"]:checked').length;
+
+                selectedText.textContent =
+                    checkedCount === 0
+                        ? selectedText.dataset.default
+                        : checkedCount + ' Selected';
                 updateButtonVisibility();
-            });
+
+                const anyChecked = document.querySelector(
+                    '.custom-multiselect input[type="checkbox"]:checked'
+                );
+
+                if (!anyChecked) {
+
+                    document.querySelectorAll('tbody tr')
+                        .forEach(row => row.style.display = '');
+
+                }
+
+            }
+
         });
 
         multiSelect.querySelector('.checkboxes').addEventListener('click', function (e) {
@@ -467,12 +599,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     .map(cb => cb.value);
             }
         });
-
-        console.log('Filters applied:', filters);
         closeAllDropdowns();
         applyTableFilters(filters);
     });
-});
+}
+document.addEventListener("DOMContentLoaded", setupFilters);
 
 function applyTableFilters(filters) {
     const rows = document.querySelectorAll('tbody tr');
@@ -498,7 +629,7 @@ function applyTableFilters(filters) {
 
 
 // Tableheader sorting(15)
-document.addEventListener('DOMContentLoaded', function () {
+function setupTableHeaderSorting() {
 
     const table = document.querySelector('table');
     const headers = table.querySelectorAll('thead tr:nth-child(2) th');
@@ -568,4 +699,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return cell.textContent.trim();
     }
-});
+}
+document.addEventListener('DOMContentLoaded', setupTableHeaderSorting);
+
+
+
