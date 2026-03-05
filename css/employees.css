@@ -596,7 +596,7 @@ tbody tr.selected {
 }
 
 .status.inactive{
-    background-color:#FF8A92;
+    background-color:#FF9191;
     color:red;
     padding: 6px 12px;
     border-radius: 2px;
