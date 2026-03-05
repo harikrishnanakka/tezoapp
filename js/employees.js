@@ -13,6 +13,7 @@ function hidehandle() {
     const logoBox = document.querySelector(".logo-box");
     const handlePic = document.querySelector(".handle-pic");
 
+
     sidebar.classList.toggle("collapsed");
 
     if (sidebar.classList.contains("collapsed")) {
@@ -30,7 +31,7 @@ function hidehandle() {
         if (tezoLogo) {
             tezoLogo.style.width = "40px";
             tezoLogo.style.maxWidth = "none";
-            tezoLogo.style.marginLeft = "10px";
+            tezoLogo.style.marginLeft = "18px";
         }
         if (logoBox) {
             logoBox.style.width = "40px";
@@ -261,7 +262,7 @@ function employeeTableInit() {
 
     const tableBody = document.querySelector("tbody");
     const letters = document.querySelectorAll(".letters span");
-    const filterIcon = document.getElementById("alphabetFilterIcon");
+    const filterIcon = document.querySelector(".alphabet-filter i");
 
     const employees = JSON.parse(localStorage.getItem("employees")) || [];
     const profileName = document.querySelector(".profile-name");
@@ -525,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Delete Enable and disabled(13)
 function toggleDeleteButton() {
-    const deleteBtn = document.getElementById("deleteBtn");
+    const deleteBtn = document.querySelector(".table-actions button");
     const tableBody = document.querySelector("tbody");
     const headerCheckbox = document.querySelector("thead tr:nth-child(2) th input[type='checkbox']");
     const checkboxes = tableBody.querySelectorAll("input[type='checkbox']");
@@ -558,7 +559,7 @@ function toggleDeleteButton() {
 // DELETE FUNCTION
 function setupDeleteFunction() {
 
-    const deleteBtn = document.getElementById("deleteBtn");
+    const deleteBtn = document.querySelector(".table-actions button");
     const tableBody = document.querySelector("tbody");
     if (!deleteBtn || !tableBody) return;
 
@@ -816,7 +817,7 @@ function setupFilters() {
             });
 
         const filterIcon =
-            document.getElementById("alphabetFilterIcon");
+            document.querySelector(".alphabet-filter i");
 
         if (filterIcon) {
 
